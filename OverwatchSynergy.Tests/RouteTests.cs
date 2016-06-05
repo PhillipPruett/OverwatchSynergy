@@ -44,7 +44,21 @@ namespace OverwatchSynergy.Tests
         [Test]
         public void synergies_are_retrievable()
         {
-            var result = httpClient.PostAsync("calculator",
+            var result = httpClient.PostAsync("calculator/GetHeroesThatHaveSynergiesWith",
+                                 new StringContent(JsonConvert.SerializeObject(new[] {"Genji"}),
+                                                   Encoding.UTF8,
+                                                   "application/json")
+                ).Result;
+
+            Console.WriteLine(result.Content.ReadAsStringAsync().Result);
+
+            result.StatusCode.Should().Be(HttpStatusCode.OK);
+        }
+
+        [Test]
+        public void weaknesses_are_retrievable()
+        {
+            var result = httpClient.PostAsync("calculator/GetHeroesThatAreWeakAgainst",
                                  new StringContent(JsonConvert.SerializeObject(new[] {"Genji"}),
                                                    Encoding.UTF8,
                                                    "application/json")
