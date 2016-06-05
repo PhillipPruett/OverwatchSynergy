@@ -24,5 +24,14 @@ namespace OverwatchSynergy.Api.Heroes
             }
             return 0;
         }
+
+        public override int GetStrengthAgainstValue(Hero hero)
+        {
+            if (hero is Genji)
+            {
+                return 100;
+            }
+            return 0;
+        }
     }
 }

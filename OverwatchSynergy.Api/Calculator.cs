@@ -48,6 +48,22 @@ namespace OverwatchSynergy.Api
                                : 0
                };
     }
+
+        public static IEnumerable<Weight> GetHeroesThatAreWeakAgainst(IEnumerable<Hero> enemyTeam)
+        {
+            return Heroes.Select(h => GetHeroesThatAreWeakAgainstForEnemyTeam(h, enemyTeam));
+        }
+
+        private static Weight GetHeroesThatAreWeakAgainstForEnemyTeam(Hero hero, IEnumerable<Hero> enemyTeam)
+        {
+            return new Weight()
+            {
+                Hero = hero,
+                Value = enemyTeam.Any()
+                               ? (int)enemyTeam.Average(enemy => enemy.GetStrengthAgainstValue(hero))
+                               : 0
+            };
+        }
 }
 
     public class Weight
