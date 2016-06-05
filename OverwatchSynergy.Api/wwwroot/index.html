@@ -9,27 +9,29 @@
     <body>
         <div class="enemies">
             <h2>Opponents</h2>
-            <!-- ko foreach: Enemies -->
+            <!-- ko foreach: Opponents -->
             <div class="hero">
-                <span class="name" data-bind="text: $data"></span>
+                <span class="name" data-bind="text: Name"></span>
+                <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
         </div>
         <div class="heroes">
             <h2>Available Heroes</h2>
-            <!-- ko foreach: HeroViewModels -->
+            <!-- ko foreach: AvailableHeroes -->
             <div class="hero">
-                <span class="add-enemy" data-bind="click: AddAsEnemy"></span>
+                <span class="add-enemy" data-bind="click: AddAsOpponent"></span>
                 <span class="name" data-bind="text: Name"></span>
-                <span class="add-ally" data-bind="click: AddAsAlly"></span>
+                <span class="add-ally" data-bind="click: AddAsTeammate"></span>
             </div>
             <!-- /ko -->
         </div>
         <div class="allies">
             <h2>Teammates</h2>
-            <!-- ko foreach: Allies -->
+            <!-- ko foreach: Teammates -->
             <div class="hero">
-                <span class="name" data-bind="text: $data"></span>
+                <span class="name" data-bind="text: Name"></span>
+                <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
         </div>
