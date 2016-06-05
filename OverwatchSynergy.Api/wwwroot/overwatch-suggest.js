@@ -1,5 +1,5 @@
 var HeroViewModel = function (hero) {
-    this.Id = hero.Id;
+    this.Name = hero.Name;
 
     this.AddEnemy = function (enemy) {
         console.log("adding " + JSON.stringify(enemy) + "as enemy");
@@ -17,7 +17,7 @@ var ViewModel = function (heroesJson) {
 };
 
 $(document).ready(function () {
-    $.getJSON("heroes/")
+    $.getJSON("../heroes/")
         .done(function (data) {
             ko.applyBindings(new ViewModel(data));
         });
