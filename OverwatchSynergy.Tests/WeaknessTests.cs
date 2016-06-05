@@ -18,11 +18,11 @@ namespace OverwatchSynergy.Tests
         }
 
         [Test]
-        public void synergies_are_averaged_when_a_retreiving_synergies_for_multiple_teamMates()
+        public void weaknesses_are_averaged_when_a_retreiving_synergies_for_multiple_teamMates()
         {
-            var synergies = Calculator.GetHeroesThatAreWeakAgainst(new[] { new Mei(), (Hero)new Bastion() });
+            var weights = Calculator.GetHeroesThatAreWeakAgainst(new[] { new Mei(), (Hero)new Bastion() });
 
-            synergies.Single(s => s.Hero is Genji).Value.Should().Be(50);
+            weights.Single(s => s.Hero is Genji).Value.Should().Be(50);
         }
     }
 }
