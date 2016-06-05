@@ -1,14 +1,10 @@
 body {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
-body > div {
-    flex-grow: 1;
-    border: 1px solid black;
-}
-
-body > div h2 {
+h2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,7 +14,6 @@ body > div h2 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin:auto;
 }
 
 .name {
@@ -38,3 +33,9 @@ body > div h2 {
 .add-ally::after {
     content: "+ALLY+";
 }
+
+[data-bind~="click:"]:hover{
+    color: white;
+    background-color: black;
+}
+
