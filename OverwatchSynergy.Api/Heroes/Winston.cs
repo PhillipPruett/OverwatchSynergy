@@ -10,6 +10,10 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Torbjorn)
+            {
+                return 100;
+            }
             return 0;
         }
     }

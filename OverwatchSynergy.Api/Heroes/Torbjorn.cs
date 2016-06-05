@@ -10,6 +10,14 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Symmetra)
+            {
+                return 100;
+            }
+            if (hero is Winston)
+            {
+                return 100;
+            }
             return 0;
         }
     }

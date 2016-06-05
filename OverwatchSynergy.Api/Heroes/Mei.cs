@@ -10,6 +10,18 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Junkrat)
+            {
+                return 100;
+            }
+            if (hero is Mercy)
+            {
+                return 100;
+            }
+            if (hero is Zarya)
+            {
+                return 100;
+            }
             return 0;
         }
     }

@@ -10,6 +10,18 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Reaper)
+            {
+                return 100;
+            }
+            if (hero is Soldier76)
+            {
+                return 100;
+            }
+            if (hero is Widowmaker)
+            {
+                return 100;
+            }
             return 0;
         }
     }

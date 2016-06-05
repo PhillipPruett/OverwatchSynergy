@@ -14,6 +14,10 @@ namespace OverwatchSynergy.Api.Heroes
             {
                 return 100;
             }
+            if (hero is Bastion)
+            {
+                return 100;
+            }
             return 0;
         }
     }

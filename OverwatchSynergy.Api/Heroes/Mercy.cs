@@ -14,6 +14,18 @@ namespace OverwatchSynergy.Api.Heroes
             {
                 return 100;
             }
+            if (hero is DVa)
+            {
+                return 100;
+            }
+            if (hero is Mei)
+            {
+                return 100;
+            }
+            if (hero is Pharah)
+            {
+                return 100;
+            }
             return 0;
         }
     }

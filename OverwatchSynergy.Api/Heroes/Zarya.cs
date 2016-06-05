@@ -10,6 +10,18 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Hanzo)
+            {
+                return 50;
+            }
+            if (hero is Tracer)
+            {
+                return 100;
+            }
+            if (hero is Mei)
+            {
+                return 100;
+            }
             return 0;
         }
     }

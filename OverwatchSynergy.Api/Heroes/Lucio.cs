@@ -10,6 +10,18 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetSynergyValue(Hero hero)
         {
+            if (hero is Genji)
+            {
+                return 100;
+            }
+            if (hero is Roadhog)
+            {
+                return 100;
+            }
+            if (hero is McCree)
+            {
+                return 100;
+            }
             return 0;
         }
     }
