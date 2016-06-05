@@ -18,7 +18,7 @@ var CalculatorViewModel = function (heroesJson) {
     this.Opponents = ko.observableArray();
     this.Teammates = ko.observableArray();
     this.AvailableHeroes = heroesJson.map(function (hero) {
-        return new HeroViewModel(hero, calculatorViewModel);
+        return new HeroViewModel(hero, _this);
     });
     this.WeightedSuggestions = ko.computed(function () {
         var counterWeights = ko.unwrap(_counterWeights),
@@ -33,14 +33,15 @@ var CalculatorViewModel = function (heroesJson) {
         return allWeights.sort(function(a,b){return b.Weight - a.Weight;});
     });
 
-    var getWeightMap = function (weights) {
+    function getWeightMap(weights) {
         var map = {};
         for (weight of weights) {
             map[weight.Hero.Name] = weight.Value;
         }
         return map;
-    },
-        combineWeights = function (counter, synergy) {
+    }
+
+    function combineWeights(counter, synergy) {
         if (counter === undefined && synergy === undefined) {
             return 50;
         }
