@@ -10,7 +10,9 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
     }
 
     this.Remove = function () {
-        team.remove(this);
+        if (team && typeof(team.remove) === 'function') {
+            team.remove(this);
+        }
     }
 }
 
