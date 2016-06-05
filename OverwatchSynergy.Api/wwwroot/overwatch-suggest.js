@@ -1,12 +1,16 @@
-var HeroViewModel = function (hero, calculatorViewModel) {
+var HeroViewModel = function (hero, calculatorViewModel, team) {
     this.Name = hero.Name;
 
-    this.AddAsOpponent = function (opponent) {
-        calculatorViewModel.Opponents.push(opponent.Name);
+    this.AddAsOpponent = function () {
+        calculatorViewModel.Opponents.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Opponents));
     }
 
-    this.AddAsTeammate = function (teammate) {
-        calculatorViewModel.Teammates.push(teammate.Name);
+    this.AddAsTeammate = function () {
+        calculatorViewModel.Teammates.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Teammates));
+    }
+
+    this.Remove = function () {
+        team.remove(this);
     }
 }
 

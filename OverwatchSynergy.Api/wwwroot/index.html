@@ -11,7 +11,8 @@
             <h2>Opponents</h2>
             <!-- ko foreach: Opponents -->
             <div class="hero">
-                <span class="name" data-bind="text: $data"></span>
+                <span class="name" data-bind="text: Name"></span>
+                <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
         </div>
@@ -29,7 +30,8 @@
             <h2>Teammates</h2>
             <!-- ko foreach: Teammates -->
             <div class="hero">
-                <span class="name" data-bind="text: $data"></span>
+                <span class="name" data-bind="text: Name"></span>
+                <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
         </div>

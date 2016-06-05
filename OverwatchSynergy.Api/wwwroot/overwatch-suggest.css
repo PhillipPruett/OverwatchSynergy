@@ -34,6 +34,10 @@ h2 {
     content: "+ALLY+";
 }
 
+.remove::after {
+    content: "[X]";
+}
+
 [data-bind~="click:"]:hover{
     color: white;
     background-color: black;
