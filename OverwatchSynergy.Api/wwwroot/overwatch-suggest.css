@@ -1,8 +1,23 @@
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+body > div {
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+body > div h2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .hero {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width:300px;
     margin:auto;
 }
 
@@ -10,6 +25,12 @@
     padding:0px 10px;
 }
 
+.weight::before {
+    content: '(';
+}
+.weight::after {
+    content: ')';
+}
 .add-enemy::after {
     content: "+ENEMY+";
 }
