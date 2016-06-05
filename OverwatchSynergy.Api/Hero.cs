@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+
 namespace OverwatchSynergy.Api
 {
-    public class Hero
+    public abstract class Hero
     {
-        public string Name { get; set; }
-        public string Role { get; set; }   
+        public abstract string Name { get; }
+        public abstract string Role { get; }
+        
+        public abstract int GetSynergyValue(Hero hero);
     }
 }
