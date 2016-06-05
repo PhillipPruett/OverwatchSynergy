@@ -7,20 +7,20 @@ using OverwatchSynergy.Api.Heroes;
 namespace OverwatchSynergy.Tests
 {
     [TestFixture]
-    public class WeaknessTests
+    public class StrengthTests
     {
         [Test]
-        public void synergies_can_be_retrieved()
+        public void strengths_can_be_retrieved()
         {
-            var results = Calculator.GetHeroesThatAreWeakAgainst(new[] { new Mei() });
+            var results = Calculator.GetHeroesStrengthAgainst(new[] { new Mei() });
 
             results.Single(s => s.Hero is Genji).Value.Should().Be(100);
         }
 
         [Test]
-        public void weaknesses_are_averaged_when_a_retreiving_synergies_for_multiple_teamMates()
+        public void strengths_are_averaged_when_retreiving_strengths_for_multiple_teamMates()
         {
-            var weights = Calculator.GetHeroesThatAreWeakAgainst(new[] { new Mei(), (Hero)new Bastion() });
+            var weights = Calculator.GetHeroesStrengthAgainst(new[] { new Mei(), (Hero)new Bastion() });
 
             weights.Single(s => s.Hero is Genji).Value.Should().Be(50);
         }

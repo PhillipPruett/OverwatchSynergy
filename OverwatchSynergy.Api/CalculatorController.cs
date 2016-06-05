@@ -14,10 +14,10 @@ namespace OverwatchSynergy.Api
             return synergies;
         }
 
-        [HttpPost, Route("GetHeroesThatAreWeakAgainst")]
-        public IEnumerable<Weight> GetHeroesThatAreWeakAgainst(string[] enemyTeam)
+        [HttpPost, Route("GetHeroesStrengthAgainst")]
+        public IEnumerable<Weight> GetHeroesStrengthAgainst(string[] enemyTeam)
         {
-            var synergies = Calculator.GetHeroesThatAreWeakAgainst(Calculator.Heroes.Where(h => enemyTeam.Contains(h.Name)));
+            var synergies = Calculator.GetHeroesStrengthAgainst(Calculator.Heroes.Where(h => enemyTeam.Contains(h.Name)));
             return synergies;
         }
     }

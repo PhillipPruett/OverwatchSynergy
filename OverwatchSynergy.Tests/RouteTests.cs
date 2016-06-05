@@ -56,9 +56,9 @@ namespace OverwatchSynergy.Tests
         }
 
         [Test]
-        public void weaknesses_are_retrievable()
+        public void strengths_are_retrievable()
         {
-            var result = httpClient.PostAsync("calculator/GetHeroesThatAreWeakAgainst",
+            var result = httpClient.PostAsync("calculator/GetHeroesStrengthAgainst",
                                  new StringContent(JsonConvert.SerializeObject(new[] {"Genji"}),
                                                    Encoding.UTF8,
                                                    "application/json")
