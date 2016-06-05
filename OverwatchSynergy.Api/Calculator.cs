@@ -49,7 +49,7 @@ namespace OverwatchSynergy.Api
                };
     }
 
-        public static IEnumerable<Weight> GetHeroesThatAreWeakAgainst(IEnumerable<Hero> enemyTeam)
+        public static IEnumerable<Weight> GetHeroesStrengthAgainst(IEnumerable<Hero> enemyTeam)
         {
             return Heroes.Select(h => GetHeroesThatAreWeakAgainstForEnemyTeam(h, enemyTeam));
         }
