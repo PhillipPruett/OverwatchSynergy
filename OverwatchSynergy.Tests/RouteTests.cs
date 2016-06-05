@@ -36,9 +36,9 @@ namespace OverwatchSynergy.Tests
         }
 
         [Test]
-        public void the_home_page_returned_OK()
+        public void the_home_page_returned_302()
         {
-            httpClient.GetAsync("").Result.StatusCode.Should().Be(HttpStatusCode.OK);
+            httpClient.GetAsync("").Result.StatusCode.Should().Be(HttpStatusCode.Redirect);
         }
 
         [Test]
