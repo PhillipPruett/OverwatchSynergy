@@ -19,7 +19,31 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetStrengthAgainstValue(Hero hero)
         {
-            return 0;
+            if (hero is Bastion)
+            {
+                return 100;
+            }
+            if (hero is Reinhardt)
+            {
+                return 100;
+            }
+            if (hero is Genji)
+            {
+                return 100;
+            }
+            if (hero is Winston)
+            {
+                return 0;
+            }
+            if (hero is Pharah)
+            {
+                return 0;
+            }
+            if (hero is Junkrat)
+            {
+                return 0;
+            }
+            return 50;
         }
     }
 }

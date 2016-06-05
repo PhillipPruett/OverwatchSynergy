@@ -27,7 +27,31 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetStrengthAgainstValue(Hero hero)
         {
-            return 0;
+            if (hero is DVa)
+            {
+                return 100;
+            }
+            if (hero is Winston)
+            {
+                return 100;
+            }
+            if (hero is Zarya)
+            {
+                return 100;
+            }
+            if (hero is Tracer)
+            {
+                return 0;
+            }
+            if (hero is Widowmaker)
+            {
+                return 0;
+            }
+            if (hero is Genji)
+            {
+                return 0;
+            }
+            return 50;
         }
     }
 }
