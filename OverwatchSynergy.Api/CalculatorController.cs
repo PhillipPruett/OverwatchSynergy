@@ -20,5 +20,21 @@ namespace OverwatchSynergy.Api
             var synergies = Calculator.GetHeroesStrengthAgainst(Calculator.Heroes.Where(h => enemyTeam.Contains(h.Name)));
             return synergies;
         }
+
+        [HttpPost, Route("GetOverallScoresForAllHeroes")]
+        public IEnumerable<Weight> GetOverallScoresForAllHeroes(GetOverallRankingsForAllHeroesRequest request)
+        {
+            var scores = Calculator.GetOverallScoresForAllHeroes(Calculator.Heroes.Where(h => request.Opponents.Contains(h.Name)),
+                                                                 Calculator.Heroes.Where(h => request.Teammates.Contains(h.Name)),
+                                                                 request.RelativeSynergyWeight);
+            return scores;
+        }
+    }
+
+    public class GetOverallRankingsForAllHeroesRequest
+    {
+        public IEnumerable<string> Opponents { get; set; }
+        public IEnumerable<string> Teammates { get; set; }
+        public double RelativeSynergyWeight { get; set; } = 1;
     }
 }
