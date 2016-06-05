@@ -4,10 +4,10 @@ namespace OverwatchSynergy.Api
 {
     public class HomeController : ApiController
     {
-        [HttpGet, Route("")]
-        public string Get()
-        {
-            return "Overwatch Synergy Calculator";
-        }
+        //[HttpGet, Route("")]
+        //public string Get()
+        //{
+        //    return "Overwatch Synergy Calculator";
+        //}
     }
 }

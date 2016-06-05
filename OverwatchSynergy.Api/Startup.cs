@@ -1,5 +1,7 @@
 ﻿using System.Web.Http;
 using Microsoft.Owin;
+using Microsoft.Owin.StaticFiles;
+using Microsoft.Owin.FileSystems;
 using OverwatchSynergy.Api;
 using Owin;
 
@@ -16,6 +18,10 @@ namespace OverwatchSynergy.Api
             config.MapHttpAttributeRoutes();
             config.EnsureInitialized();
             app.UseWebApi(config);
+            app.UseFileServer(new FileServerOptions
+            {
+                FileSystem = new PhysicalFileSystem("wwwroot/")
+            });
         }
     }
 }
