@@ -21,7 +21,31 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetStrengthAgainstValue(Hero hero)
         {
-            return 0;
+            if (hero is Pharah)
+            {
+                return 100;
+            }
+            if (hero is Mercy)
+            {
+                return 100;
+            }
+            if (hero is Tracer)
+            {
+                return 100;
+            }
+            if (hero is Hero)
+            {
+                return 0;
+            }
+            if (hero is Zenyatta)
+            {
+                return 0;
+            }
+            if (hero is Reaper)
+            {
+                return 0;
+            }
+            return 50;
         }
     }
 }

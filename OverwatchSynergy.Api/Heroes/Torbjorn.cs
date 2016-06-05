@@ -23,7 +23,31 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override int GetStrengthAgainstValue(Hero hero)
         {
-            return 0;
+            if (hero is Genji)
+            {
+                return 100;
+            }
+            if (hero is Roadhog)
+            {
+                return 100;
+            }
+            if (hero is Lucio)
+            {
+                return 100;
+            }
+            if (hero is Reaper)
+            {
+                return 0;
+            }
+            if (hero is Junkrat)
+            {
+                return 0;
+            }
+            if (hero is DVa)
+            {
+                return 0;
+            }
+            return 50;
         }
     }
 }
