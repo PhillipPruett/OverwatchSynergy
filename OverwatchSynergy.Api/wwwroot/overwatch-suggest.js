@@ -63,7 +63,7 @@ var CalculatorViewModel = function (heroesJson) {
     this.Opponents.subscribe(function (opponents) {
         $.post({
             url: "../calculator/GetHeroesStrengthAgainst",
-            data: JSON.stringify(opponents),
+            data: JSON.stringify(opponents.map(function (h) { return h.Name; })),
             contentType: "application/json"
         })
         .done(function (data) {
@@ -74,7 +74,7 @@ var CalculatorViewModel = function (heroesJson) {
     this.Teammates.subscribe(function (teammates) {
         $.post({
             url: "../calculator/GetHeroesThatHaveSynergiesWith",
-            data: JSON.stringify(teammates),
+            data: JSON.stringify(teammates.map(function (h) { return h.Name; })),
             contentType: "application/json"
         })
         .done(function (data) {
