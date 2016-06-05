@@ -11,17 +11,6 @@ namespace OverwatchSynergy.Tests
     [TestFixture]
     public class SynergyTests
     {
-        [SetUp]
-        public void SetUp()
-        {
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-        }
-        
-
         [Test]
         public void synergies_can_be_retrieved()
         {

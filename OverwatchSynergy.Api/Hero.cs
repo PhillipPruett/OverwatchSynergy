@@ -8,5 +8,6 @@ namespace OverwatchSynergy.Api
         public abstract string Role { get; }
         
         public abstract int GetSynergyValue(Hero hero);
+        public abstract int GetStrengthAgainstValue(Hero hero);
     }
 }

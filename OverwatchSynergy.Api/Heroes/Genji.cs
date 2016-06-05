@@ -18,5 +18,10 @@ namespace OverwatchSynergy.Api.Heroes
             }
             return 0;
         }
+
+        public override int GetStrengthAgainstValue(Hero hero)
+        {
+            return 0;
+        }
     }
 }
