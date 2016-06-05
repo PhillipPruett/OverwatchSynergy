@@ -21,7 +21,7 @@ namespace OverwatchSynergy.Api
             return synergies;
         }
 
-        [HttpPost, Route("GetOverallRankingsForAllHeroes")]
+        [HttpPost, Route("GetOverallScoresForAllHeroes")]
         public IEnumerable<Weight> GetOverallScoresForAllHeroes(GetOverallRankingsForAllHeroesRequest request)
         {
             var scores = Calculator.GetOverallScoresForAllHeroes(Calculator.Heroes.Where(h => request.Opponents.Contains(h.Name)),
