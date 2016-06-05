@@ -18,10 +18,13 @@ namespace OverwatchSynergy.Api
             config.MapHttpAttributeRoutes();
             config.EnsureInitialized();
             app.UseWebApi(config);
-            app.UseFileServer(new FileServerOptions
+
+            var staticFileOptions = new StaticFileOptions
             {
-                FileSystem = new PhysicalFileSystem("wwwroot/")
-            });
+                FileSystem = new PhysicalFileSystem(@".\wwwroot"),
+                RequestPath = PathString.Empty
+            };
+            app.UseStaticFiles(staticFileOptions);
         }
     }
 }

@@ -1,10 +1,18 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-    Hello World!
-</body>
+﻿<html>
+    <head>
+        <script src="lib/knockout-latest.js"></script>
+        <script src="lib/jquery.js"></script>
+        <script src="overwatch-suggest.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="overwatch-suggest.css">
+    </head>
+    <body>
+        <div class="heroes" data-bind="foreach: HeroViewModels">
+            <div class="hero">
+                <span class="add-enemy" data-bind="click: AddEnemy"></span>
+                <span class="name" data-bind="text: Id"></span>
+                <span class="add-ally" data-bind="click: AddAlly"></span>
+            </div>
+        </div>
+    </body>
 </html>

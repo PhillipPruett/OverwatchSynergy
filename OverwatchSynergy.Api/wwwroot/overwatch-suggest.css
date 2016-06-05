@@ -1,0 +1,19 @@
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:300px;
+    margin:auto;
+}
+
+.name {
+    padding:0px 10px;
+}
+
+.add-enemy::after {
+    content: "+ENEMY+";
+}
+
+.add-ally::after {
+    content: "+ALLY+";
+}
