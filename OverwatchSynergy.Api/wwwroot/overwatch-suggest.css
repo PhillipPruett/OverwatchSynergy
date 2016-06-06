@@ -41,12 +41,8 @@ body > div {
     border-color: #00a5e2;
 }
 
-.available-heroes {
-    border-color: #ff9c00;
-}
-
 .suggested-heroes {
-    border-color: limegreen;
+    border-color: #ff9c00;
 }
 
 .hero {
