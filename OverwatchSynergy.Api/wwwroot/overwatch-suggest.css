@@ -1,19 +1,58 @@
+/* Colors
+ * Overwatch-Yellow: #ff9c00
+ * Team-Blue: #00a5e2
+ * Enemy-Red: #ee2c20
+ * Background-Black: #202020
+ * Text-White: #d2d2d2
+ * Suggest-Green:
+ */
+
 body {
+    background-color: #202020;
+    color: #d2d2d2;
+
+    font-family: Futura, sans-serif;
+
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 h2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 5px;
+    height: 56px;
+}
+
+body > div {
+    border: 3px solid;
+    border-radius: 10px;
+    flex-grow: 1;
+    margin: 5px;
+    padding: 10px;
+    max-width: 155px;
+    text-align: center;
+}
+
+.opponents {
+    border-color: #ee2c20;
+}
+
+.teammates {
+    border-color: #00a5e2;
+}
+
+.suggested-heroes {
+    border-color: #ff9c00;
 }
 
 .hero {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 2px;
 }
 
 .name {
@@ -26,20 +65,43 @@ h2 {
 .weight::after {
     content: ')';
 }
+
+.add-enemy {
+    background-color: #ee2c20;
+}
+
 .add-enemy::after {
-    content: "+ENEMY+";
+    content: "+";
+}
+
+.add-ally {
+    background-color: #00a5e2;
 }
 
 .add-ally::after {
-    content: "+ALLY+";
+    content: "+";
+}
+
+.remove {
+    background-color: #ff9c00;
 }
 
 .remove::after {
-    content: "[X]";
+    content: "X";
+}
+
+
+[data-bind~="click:"] {
+    cursor: pointer;
+    color: white;
+    padding: 1px 4px;
+    transform: skew(-20deg);
+    border-radius: 3px;
+    display: inline-block;
 }
 
 [data-bind~="click:"]:hover{
-    color: white;
-    background-color: black;
+    background-color: #FFB133;
+    
 }
 

@@ -7,7 +7,7 @@
         <link rel="stylesheet" type="text/css" href="overwatch-suggest.css">
     </head>
     <body>
-        <div class="enemies">
+        <div class="opponents">
             <h2>Opponents</h2>
             <!-- ko foreach: Opponents -->
             <div class="hero">
@@ -16,17 +16,17 @@
             </div>
             <!-- /ko -->
         </div>
-        <div class="heroes">
+        <div class="available-heroes">
             <h2>Available Heroes</h2>
             <!-- ko foreach: AvailableHeroes -->
             <div class="hero">
-                <span class="add-enemy" data-bind="click: AddAsOpponent"></span>
+                <span class="add-enemy" data-bind="click: AddAsOpponent" title="Add as Opponent"></span>
                 <span class="name" data-bind="text: Name"></span>
-                <span class="add-ally" data-bind="click: AddAsTeammate"></span>
+                <span class="add-ally" data-bind="click: AddAsTeammate" title="Add as Teammate"></span>
             </div>
             <!-- /ko -->
         </div>
-        <div class="allies">
+        <div class="teammates">
             <h2>Teammates</h2>
             <!-- ko foreach: Teammates -->
             <div class="hero">
@@ -35,7 +35,7 @@
             </div>
             <!-- /ko -->
         </div>
-        <div class="suggestions">
+        <div class="suggested-heroes">
             <h2>Suggested Heroes</h2>
             <!-- ko foreach: WeightedSuggestions -->
             <div class="hero">
