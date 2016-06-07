@@ -112,6 +112,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="wwwroot\img\bastion.png" />
+    <Content Include="wwwroot\img\dva.png" />
+    <Content Include="wwwroot\img\genji.png" />
+    <Content Include="wwwroot\img\hanzo.png" />
+    <Content Include="wwwroot\img\junkrat.png" />
+    <Content Include="wwwroot\img\lucio.png" />
+    <Content Include="wwwroot\img\mccree.png" />
+    <Content Include="wwwroot\img\mei.png" />
+    <Content Include="wwwroot\img\mercy.png" />
+    <Content Include="wwwroot\img\pharah.png" />
+    <Content Include="wwwroot\img\reaper.png" />
+    <Content Include="wwwroot\img\reinhardt.png" />
+    <Content Include="wwwroot\img\roadhog.png" />
+    <Content Include="wwwroot\img\soldier76.png" />
+    <Content Include="wwwroot\img\symmetra.png" />
+    <Content Include="wwwroot\img\torbjorn.png" />
+    <Content Include="wwwroot\img\tracer.png" />
+    <Content Include="wwwroot\img\widowmaker.png" />
+    <Content Include="wwwroot\img\winston.png" />
+    <Content Include="wwwroot\img\zarya.png" />
+    <Content Include="wwwroot\img\zenyatta.png" />
     <Content Include="wwwroot\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
