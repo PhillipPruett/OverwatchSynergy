@@ -11,7 +11,7 @@
             <h2>Opponents</h2>
             <!-- ko foreach: Opponents -->
             <div class="hero">
-                <span class="name" data-bind="text: Name"></span>
+                <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                 <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
@@ -30,7 +30,7 @@
             <h2>Teammates</h2>
             <!-- ko foreach: Teammates -->
             <div class="hero">
-                <span class="name" data-bind="text: Name"></span>
+                <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                 <span class="remove" data-bind="click: Remove"></span>
             </div>
             <!-- /ko -->
@@ -39,8 +39,8 @@
             <h2>Suggested Heroes</h2>
             <!-- ko foreach: WeightedSuggestions -->
             <div class="hero">
-                <span class="name" data-bind="text: Hero.Name"></span>
-                <span class="weight" data-bind="text: Value"></span>
+                <span class="name" data-bind="attr: { title: Hero.Name }, style: { backgroundImage: Hero.GetBackgroundImage() }"></span>
+                <span class="weight" data-bind="text: Weight"></span>
             </div>
             <!-- /ko -->
         </div>

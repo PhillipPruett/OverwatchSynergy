@@ -25,14 +25,12 @@ var CalculatorViewModel = function (heroesJson) {
 
     this.Opponents = ko.observableArray();
     this.Teammates = ko.observableArray();
+
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new HeroViewModel(hero, _this);
     });
+
     this.WeightedSuggestions = ko.observable([]);
-
-    function updateScores(newScores) {
-
-    }
 
     function getUpdatedScores() {
         var data = {
@@ -44,7 +42,9 @@ var CalculatorViewModel = function (heroesJson) {
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(function (data) {
-            _this.WeightedSuggestions(data.sort(function (a, b) { return b.Value - a.Value; }))
+            _this.WeightedSuggestions(data.sort(function (a, b) { return b.Value - a.Value; })
+                                          .map(function (weight) { return { Weight: weight.Value, Hero: new HeroViewModel(weight.Hero, _this) } })
+                                      );
         });
     }
 
