@@ -5,6 +5,7 @@ namespace OverwatchSynergy.Api.Heroes
 {
     public class Tracer : Hero
     {
+        public override string Id => "tracer";
         public override string Name => "Tracer";
         public override string Role => "Attack";
 

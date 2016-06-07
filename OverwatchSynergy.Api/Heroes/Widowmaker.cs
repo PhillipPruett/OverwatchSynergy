@@ -5,6 +5,7 @@ namespace OverwatchSynergy.Api.Heroes
 {
     public class Widowmaker : Hero
     {
+        public override string Id => "widowmaker";
         public override string Name => "Widowmaker";
         public override string Role => "Defense";
 

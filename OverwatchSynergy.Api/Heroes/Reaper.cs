@@ -5,6 +5,7 @@ namespace OverwatchSynergy.Api.Heroes
 {
     public class Reaper : Hero
     {
+        public override string Id => "reaper";
         public override string Name => "Reaper";
         public override string Role => "Attack";
 
