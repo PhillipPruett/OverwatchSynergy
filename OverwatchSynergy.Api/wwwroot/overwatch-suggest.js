@@ -1,19 +1,25 @@
-var HeroViewModel = function (hero, calculatorViewModel, team) {
+var HeroViewModel = function(hero, calculatorViewModel, team) {
     this.Name = hero.Name;
 
-    this.GetBackgroundImage = function () {
+    this.GetBackgroundImage = function() {
         return "url('img/" + hero.Id + ".png')";
     }
 
-    this.AddAsOpponent = function () {
+    this.AddAsOpponent = function() {
+        if (calculatorViewModel.Opponents().length >= 6) {
+            return;
+        }
         calculatorViewModel.Opponents.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Opponents));
     }
 
-    this.AddAsTeammate = function () {
+    this.AddAsTeammate = function() {
+        if (calculatorViewModel.Teammates().length >= 6) {
+            return;
+        }
         calculatorViewModel.Teammates.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Teammates));
     }
 
-    this.Remove = function () {
+    this.Remove = function() {
         if (team && typeof(team.remove) === 'function') {
             team.remove(this);
         }
