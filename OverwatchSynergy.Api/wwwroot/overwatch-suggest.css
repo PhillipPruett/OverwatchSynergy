@@ -32,7 +32,7 @@ body > div {
     flex-grow: 1;
     margin: 5px;
     padding: 10px;
-    max-width: 155px;
+    max-width: 200px;
     text-align: center;
 }
 
@@ -52,11 +52,18 @@ body > div {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 2px;
+    align-items: center;
+    margin: 4px;
 }
 
 .name {
-    padding:0px 10px;
+    height: 50px;
+    width: 56px;
+    background-size:contain;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .weight::before {

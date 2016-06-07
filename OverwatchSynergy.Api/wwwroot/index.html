@@ -21,7 +21,7 @@
             <!-- ko foreach: AvailableHeroes -->
             <div class="hero">
                 <span class="add-enemy" data-bind="click: AddAsOpponent" title="Add as Opponent"></span>
-                <span class="name" data-bind="text: Name"></span>
+                <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                 <span class="add-ally" data-bind="click: AddAsTeammate" title="Add as Teammate"></span>
             </div>
             <!-- /ko -->
