@@ -20,9 +20,7 @@
             <h2>Available Heroes</h2>
             <div data-bind="foreach:AvailableHeroes">
                 <div class="hero">
-                    <span class="add-enemy" data-bind="click: AddAsOpponent"></span>
                     <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
-                    <span class="add-ally" data-bind="click: AddAsTeammate"></span>
                 </div>
             </div>
         </div>
