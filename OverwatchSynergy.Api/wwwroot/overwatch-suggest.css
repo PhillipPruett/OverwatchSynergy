@@ -7,15 +7,20 @@
  * Suggest-Green:
  */
 
+body, div {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 body {
     background-color: #202020;
     color: #d2d2d2;
 
     font-family: Futura, sans-serif;
+    text-align: center;
 
-    display: flex;
     flex-direction: row;
-    align-items:flex-start;
     justify-content: center;
 }
 
@@ -25,46 +30,64 @@ h2 {
 }
 
 body > div {
-    display:flex;
     flex-direction: column;
+}
 
-    text-align: center;
+.teams {
+    flex-direction: column;
+    justify-content: space-between;
+}
 
-    margin: 5px;
-    padding: 10px;
-    
-    border: 3px solid;
+.teams > div {
+    border-width: 3px;
+    border-style: solid;
     border-radius: 10px;
+    flex-grow:1;
+    margin: 5px;
 }
-
-body > div > div {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-content: center;
-    height: 650px;
-    width: 200px;
-}
-
 
 .opponents {
     border-color: #ee2c20;
+}
+
+.opponents::after {
+    content: "Enemy Team";
 }
 
 .teammates {
     border-color: #00a5e2;
 }
 
+.teammates::after {
+    content: "Your Team";
+}
+
+.available-heroes {
+    flex-flow: row wrap;
+    width: 710px;
+}
+
+.available-heroes::after {
+    content: "Available Heroes";
+}
+
 .suggested-heroes {
+    border: 3px solid;
+    border-radius: 10px;
     border-color: #ff9c00;
+    margin: 5px;
+}
+.suggested-heroes::after {
+    content: "Suggested Heroes";
 }
 
 .hero {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     margin: 4px;
+}
+
+.hero:hover {
+    background-color: #ff9c00;
 }
 
 .name {

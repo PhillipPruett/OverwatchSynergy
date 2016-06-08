@@ -7,39 +7,29 @@
         <link rel="stylesheet" type="text/css" href="overwatch-suggest.css">
     </head>
     <body>
-        <div class="opponents">
-            <h2>Opponents</h2>
-            <div data-bind="foreach:Opponents">
-            <div class="hero">
-                <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
-                <span class="remove" data-bind="click: Remove"></span>
+        <div class="teams">
+            <div class="opponents" data-bind="foreach:Opponents">
+                <div class="hero">
+                    <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
+                    <span class="remove" data-bind="click: Remove"></span>
+                </div>
             </div>
-            </div>
-        </div>
-        <div class="available-heroes">
-            <h2>Available Heroes</h2>
-            <div data-bind="foreach:AvailableHeroes">
+            <div class="available-heroes" data-bind="foreach:AvailableHeroes">
                 <div class="hero">
                     <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
             </div>
-        </div>
-        <div class="teammates">
-            <h2>Teammates</h2>
-            <div data-bind="foreach:Teammates">
+            <div class="teammates" data-bind="foreach:Teammates">
                 <div class="hero">
                     <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                     <span class="remove" data-bind="click: Remove"></span>
                 </div>
             </div>
         </div>
-        <div class="suggested-heroes">
-            <h2>Suggested Heroes</h2>
-            <div data-bind="foreach:WeightedSuggestions">
-                <div class="hero">
-                    <span class="name" data-bind="attr: { title: Hero.Name }, style: { backgroundImage: Hero.GetBackgroundImage() }"></span>
-                    <span class="weight" data-bind="text: Weight"></span>
-                </div>
+        <div class="suggested-heroes" data-bind="foreach:WeightedSuggestions">
+            <div class="hero">
+                <span class="name" data-bind="attr: { title: Hero.Name }, style: { backgroundImage: Hero.GetBackgroundImage() }"></span>
+                <span class="weight" data-bind="text: Weight"></span>
             </div>
         </div>
     </body>
