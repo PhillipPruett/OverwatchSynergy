@@ -52,16 +52,8 @@ body > div {
     border-color: #ee2c20;
 }
 
-.opponents::after {
-    content: "Enemy Team";
-}
-
 .teammates {
     border-color: #00a5e2;
-}
-
-.teammates::after {
-    content: "Your Team";
 }
 
 .available-heroes {
@@ -104,29 +96,6 @@ body > div {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-
-.weight::before {
-    content: '(';
-}
-.weight::after {
-    content: ')';
-}
-
-.add-enemy {
-    background-color: #ee2c20;
-}
-
-.add-enemy::after {
-    content: "+";
-}
-
-.add-ally {
-    background-color: #00a5e2;
-}
-
-.add-ally::after {
-    content: "+";
 }
 
 .remove {

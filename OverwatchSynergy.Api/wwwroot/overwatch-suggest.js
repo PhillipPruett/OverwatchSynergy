@@ -18,7 +18,10 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
         calculatorViewModel.SelectedTeam.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam));
     }
 
-    this.Remove = function () {
+    this.Click = function () {
+        if (!hero.Id) {
+            calculatorViewModel.SelectedTeam = team;
+        }
         if (team && typeof(team.remove) === 'function') {
             team.remove(this);
         }
@@ -31,14 +34,16 @@ var CalculatorViewModel = function (heroesJson) {
         teammates = ko.observableArray(),
         suggestions = ko.observable([]);
 
-    var addEmpties = function (team) {
+    var addEmpties = function (currentTeam) {
+        var team = currentTeam.slice(0);
         for (var i = team.length; i < 6; i++) {
             team.push(new HeroViewModel(
                 {
                     Name: "Add Hero",
                     
                 },
-                _this));
+                _this,
+                currentTeam));
         }
         return team;
     }
@@ -50,11 +55,11 @@ var CalculatorViewModel = function (heroesJson) {
     });
 
     this.OpponentsView = ko.pureComputed(function() {
-        return addEmpties(opponents.slice(0));
+        return addEmpties(opponents);
     });
 
     this.TeammatesView = ko.pureComputed(function () {
-        return addEmpties(teammates.slice(0));
+        return addEmpties(teammates);
     });
 
     this.SuggestionsView = ko.pureComputed(function () {
@@ -67,14 +72,6 @@ var CalculatorViewModel = function (heroesJson) {
                 }
             });
     });
-
-    this.AddTeammates = function() {
-        this.SelectedTeam = teammates;
-    }
-
-    this.AddOpponents = function () {
-        this.SelectedTeam = opponents;
-    }
 
     function getUpdatedScores() {
         var data = {
