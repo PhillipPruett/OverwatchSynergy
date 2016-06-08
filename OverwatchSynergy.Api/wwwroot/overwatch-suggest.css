@@ -134,11 +134,8 @@ body > div {
 
 [data-bind~="click:"] {
     cursor: pointer;
-    color: white;
     padding: 1px 4px;
-    transform: skew(-20deg);
     border-radius: 3px;
-    display: inline-block;
 }
 
 [data-bind~="click:"]:hover{

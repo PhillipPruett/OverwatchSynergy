@@ -5,18 +5,8 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
         return "url('img/" + hero.Id + ".png')";
     }
 
-    this.AddAsOpponent = function () {
-        if (calculatorViewModel.Opponents().length < 6) {
-            calculatorViewModel.Opponents
-                .push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Opponents));
-        }
-    }
-
-    this.AddAsTeammate = function () {
-        if (calculatorViewModel.Teammates().length < 5) {
-            calculatorViewModel.Teammates
-                .push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Teammates));
-        }
+    this.Add = function () {
+        calculatorViewModel.SelectedTeam.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam));
     }
 
     this.Remove = function () {
@@ -31,12 +21,21 @@ var CalculatorViewModel = function (heroesJson) {
 
     this.Opponents = ko.observableArray();
     this.Teammates = ko.observableArray();
+    this.SelectedTeam = [];
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new HeroViewModel(hero, _this);
     });
 
     this.WeightedSuggestions = ko.observable([]);
+
+    this.AddTeammates = function() {
+        this.SelectedTeam = this.Teammates;
+    }
+
+    this.AddOpponents = function () {
+        this.SelectedTeam = this.Opponents;
+    }
 
     function getUpdatedScores() {
         var data = {
@@ -49,6 +48,7 @@ var CalculatorViewModel = function (heroesJson) {
             contentType: "application/json"
         }).done(function (data) {
             _this.WeightedSuggestions(data.sort(function (a, b) { return b.Value - a.Value; })
+                                          .slice(0,3)
                                           .map(function (weight) { return { Weight: weight.Value, Hero: new HeroViewModel(weight.Hero, _this) } })
                                       );
         });
