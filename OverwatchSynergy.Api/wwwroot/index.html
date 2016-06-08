@@ -1,6 +1,6 @@
 ﻿<html>
     <head>
-        <title>Pallas</title>
+        <title>Aegis</title>
         <script src="lib/knockout-latest.js"></script>
         <script src="lib/jquery.js"></script>
         <script src="overwatch-suggest.js"></script>
@@ -10,12 +10,10 @@
     <body>
         <div class="teams">
             <div class="opponents">
-                <!-- ko if: !Opponents().length -->
                 <span class="add-opponents" data-bind="click: AddOpponents">Add Opponents</span>
-                <!-- /ko -->
-                <!-- ko foreach: Opponents -->
+                <!-- ko foreach: OpponentsView -->
                 <div class="hero">
-                    <span class="name" data-bind="click: Remove, attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
+                    <span class="name" data-bind="click: Remove, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
                 <!-- /ko -->
             </div>
@@ -25,17 +23,15 @@
                 </div>
             </div>
             <div class="teammates">
-                <!-- ko if: !Teammates().length -->
                 <span class="add-teammates" data-bind="click: AddTeammates">Add Teammates</span>
-                <!-- /ko -->
-                <!-- ko foreach: Teammates -->
+                <!-- ko foreach: TeammatesView -->
                 <div class="hero">
-                    <span class="name" data-bind="click: Remove, attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
+                    <span class="name" data-bind="click: Remove, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
                 <!-- /ko -->
             </div>
         </div>
-        <div class="suggested-heroes" data-bind="foreach:WeightedSuggestions">
+        <div class="suggested-heroes" data-bind="foreach:SuggestionsView">
             <div class="hero">
                 <span class="name" data-bind="attr: { title: Hero.Name }, style: { backgroundImage: Hero.GetBackgroundImage() }"></span>
                 <span class="weight" data-bind="text: Weight"></span>

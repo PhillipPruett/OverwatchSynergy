@@ -2,7 +2,16 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
     this.Name = hero.Name;
 
     this.GetBackgroundImage = function () {
-        return "url('img/" + hero.Id + ".png')";
+        if (hero.Id) {
+            return "url('img/" + hero.Id + ".png')";
+        }
+        return "none"
+    }
+
+    this.GetClass = function () {
+        if (!hero.Id) {
+            return "empty";
+        }
     }
 
     this.Add = function () {
@@ -17,45 +26,72 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
 }
 
 var CalculatorViewModel = function (heroesJson) {
-    var _this = this;
+    var _this = this,
+        opponents = ko.observableArray(),
+        teammates = ko.observableArray(),
+        suggestions = ko.observable([]);
 
-    this.Opponents = ko.observableArray();
-    this.Teammates = ko.observableArray();
+    var addEmpties = function (team) {
+        for (var i = team.length; i < 6; i++) {
+            team.push(new HeroViewModel(
+                {
+                    Name: "Add Hero",
+                    
+                },
+                _this));
+        }
+        return team;
+    }
+
     this.SelectedTeam = [];
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new HeroViewModel(hero, _this);
     });
 
-    this.WeightedSuggestions = ko.observable([]);
+    this.OpponentsView = ko.pureComputed(function() {
+        return addEmpties(opponents.slice(0));
+    });
+
+    this.TeammatesView = ko.pureComputed(function () {
+        return addEmpties(teammates.slice(0));
+    });
+
+    this.SuggestionsView = ko.pureComputed(function () {
+        return suggestions()
+            .slice(0, 3)
+            .map(function (weight) {
+                return {
+                    Weight: weight.Value,
+                    Hero: new HeroViewModel(weight.Hero, _this)
+                }
+            });
+    });
 
     this.AddTeammates = function() {
-        this.SelectedTeam = this.Teammates;
+        this.SelectedTeam = teammates;
     }
 
     this.AddOpponents = function () {
-        this.SelectedTeam = this.Opponents;
+        this.SelectedTeam = opponents;
     }
 
     function getUpdatedScores() {
         var data = {
-            Opponents: _this.Opponents().map(function (h) { return h.Name; }),
-            Teammates: _this.Teammates().map(function (h) { return h.Name; }),
+            Opponents: opponents().map(function (h) { return h.Name; }),
+            Teammates: teammates().map(function (h) { return h.Name; }),
         }
         return $.post({
             url: "../calculator/GetOverallScoresForAllHeroes",
             data: JSON.stringify(data),
             contentType: "application/json"
         }).done(function (data) {
-            _this.WeightedSuggestions(data.sort(function (a, b) { return b.Value - a.Value; })
-                                          .slice(0,3)
-                                          .map(function (weight) { return { Weight: weight.Value, Hero: new HeroViewModel(weight.Hero, _this) } })
-                                      );
+            suggestions(data.sort(function (a, b) { return b.Value - a.Value; }));
         });
     }
 
-    this.Opponents.subscribe(getUpdatedScores);
-    this.Teammates.subscribe(getUpdatedScores);
+    opponents.subscribe(getUpdatedScores);
+    teammates.subscribe(getUpdatedScores);
 };
 
 $(document).ready(function () {

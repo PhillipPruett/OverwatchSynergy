@@ -10,6 +10,7 @@
 body, div {
     display: flex;
     align-content: center;
+    align-items: center;
     justify-content: center;
 }
 
@@ -22,6 +23,7 @@ body {
 
     flex-direction: row;
     justify-content: center;
+    align-items: stretch;
 }
 
 h2 {
@@ -86,6 +88,10 @@ body > div {
     margin: 4px;
 }
 
+.hero .empty {
+    border: 3px dashed #d2d2d2;
+}
+
 .hero:hover {
     background-color: #ff9c00;
 }
@@ -131,15 +137,11 @@ body > div {
     content: "X";
 }
 
-
 [data-bind~="click:"] {
     cursor: pointer;
-    padding: 1px 4px;
-    border-radius: 3px;
 }
 
 [data-bind~="click:"]:hover{
     background-color: #FFB133;
-    
 }
 
