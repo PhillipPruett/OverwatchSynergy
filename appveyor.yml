@@ -1,0 +1,15 @@
+install:
+  - nuget restore
+
+configuration:
+  - Release
+
+build:
+  project: OverwatchSynergy.sln
+  publish_nuget: true
+
+test:
+  assemblies:
+    - '**\*Tests.dll'
+
+
