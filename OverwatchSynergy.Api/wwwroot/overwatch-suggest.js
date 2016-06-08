@@ -6,11 +6,17 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
     }
 
     this.AddAsOpponent = function () {
-        calculatorViewModel.Opponents.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Opponents));
+        if (calculatorViewModel.Opponents().length < 6) {
+            calculatorViewModel.Opponents
+                .push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Opponents));
+        }
     }
 
     this.AddAsTeammate = function () {
-        calculatorViewModel.Teammates.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Teammates));
+        if (calculatorViewModel.Teammates().length < 5) {
+            calculatorViewModel.Teammates
+                .push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.Teammates));
+        }
     }
 
     this.Remove = function () {
