@@ -37,32 +37,29 @@ body > div {
 
 .teams {
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .teams > div {
     border-width: 3px;
     border-style: solid;
     border-radius: 10px;
-    flex-grow:1;
     margin: 5px;
 }
 
-.opponents {
+.opponents, .opponents .hero .name {
+    color: #ee2c20;
     border-color: #ee2c20;
 }
 
-.teammates {
+.teammates, .teammates .hero .name {
+    color: #00a5e2;
     border-color: #00a5e2;
 }
 
 .available-heroes {
     flex-flow: row wrap;
-    width: 710px;
-}
-
-.available-heroes::after {
-    content: "Available Heroes";
+    width: 750px;
+    height: 200px;
 }
 
 .suggested-heroes {
@@ -70,9 +67,21 @@ body > div {
     border-radius: 10px;
     border-color: #ff9c00;
     margin: 5px;
+    height: 200px;
+
+    align-self: center;
+
+    flex-flow: row wrap;
+    width: 150px;
 }
+
 .suggested-heroes::after {
     content: "Suggested Heroes";
+}
+
+.suggested-heroes .hero:first-child .name {
+    height: 100px;
+    width: 112px;
 }
 
 .hero {
@@ -80,8 +89,18 @@ body > div {
     margin: 4px;
 }
 
+.hero .name {
+    border: 1px solid;
+}
+
 .hero .empty {
-    border: 3px dashed #d2d2d2;
+    border: 1px dashed #d2d2d2;
+}
+
+.hero .empty::after {
+    content: "+";
+    margin: auto;
+    font-size: 24px;
 }
 
 .hero:hover {
