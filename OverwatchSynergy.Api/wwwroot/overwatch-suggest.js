@@ -1,8 +1,10 @@
-var HeroViewModel = function (hero, calculatorViewModel, team) {
+var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
     this.Name = hero.Name;
 
+    this.IsEmpty = hero.Id === undefined;
+
     this.GetBackgroundImage = function () {
-        if (hero.Id) {
+        if (!this.IsEmpty) {
             return "url('img/" + hero.Id + ".png')";
         }
         return "none"
@@ -10,22 +12,46 @@ var HeroViewModel = function (hero, calculatorViewModel, team) {
 
     this.GetClass = function () {
         if (!hero.Id) {
+            if (this.IsAdding) {
+                return "adding";
+            }
             return "empty";
         }
     }
 
-    this.Add = function () {
-        calculatorViewModel.SelectedTeam.push(new HeroViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam));
-    }
-
     this.Click = function () {
         if (!hero.Id) {
-            calculatorViewModel.SelectedTeam = team;
+            calculatorViewModel.SelectedTeam(team);
         }
         if (team && typeof(team.remove) === 'function') {
             team.remove(this);
         }
     }
+
+}
+
+var AvailableHeroViewModel = function (hero, calculatorViewModel) {
+    var _this = this;
+
+    this.Name = hero.Name;
+
+    this.GetBackgroundImage = function () {
+        return "url('img/" + hero.Id + ".png')";
+    }
+
+    this.Add = function () {
+        if (calculatorViewModel.SelectedTeam()().length < 6) {
+            calculatorViewModel.SelectedTeam().push(new TeamMemberViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam()));
+        }
+    }
+}
+
+var SuggestedHeroViewModel = function (hero, weight) {
+    this.Name = hero.Name;
+    this.GetBackgroundImage = function () {
+        return "url('img/" + hero.Id + ".png')";
+    }
+    this.Weight = weight;
 }
 
 var CalculatorViewModel = function (heroesJson) {
@@ -37,21 +63,22 @@ var CalculatorViewModel = function (heroesJson) {
     var addEmpties = function (currentTeam) {
         var team = currentTeam.slice(0);
         for (var i = team.length; i < 6; i++) {
-            team.push(new HeroViewModel(
+            var teamMemberViewModel = new TeamMemberViewModel(
                 {
                     Name: "Add Hero",
-                    
                 },
                 _this,
-                currentTeam));
+                currentTeam);
+
+            team.push(teamMemberViewModel);
         }
         return team;
     }
 
-    this.SelectedTeam = [];
+    this.SelectedTeam = ko.observable([]);
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
-        return new HeroViewModel(hero, _this);
+        return new AvailableHeroViewModel(hero, _this);
     });
 
     this.OpponentsView = ko.pureComputed(function() {
@@ -66,10 +93,8 @@ var CalculatorViewModel = function (heroesJson) {
         return suggestions()
             .slice(0, 3)
             .map(function (weight) {
-                return {
-                    Weight: weight.Value,
-                    Hero: new HeroViewModel(weight.Hero, _this)
-                }
+                return new SuggestedHeroViewModel(weight.Hero, weight.Value)
+                
             });
     });
 

@@ -4,7 +4,7 @@
  * Enemy-Red: #ee2c20
  * Background-Black: #202020
  * Text-White: #d2d2d2
- * Suggest-Green:
+ * Suggest-Green: #00ff00;
  */
 
 body, div {
@@ -91,10 +91,15 @@ body > div {
 
 .hero .name {
     border: 1px solid;
+    border-radius: 3px;
 }
 
 .hero .empty {
-    border: 1px dashed #d2d2d2;
+    border-style: dashed;
+}
+
+.hero .adding {
+    border-color: #00ff00;
 }
 
 .hero .empty::after {
