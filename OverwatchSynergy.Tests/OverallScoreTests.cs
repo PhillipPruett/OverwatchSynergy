@@ -16,7 +16,7 @@ namespace OverwatchSynergy.Tests
         {
             var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] { new Reaper() }, new[] { new Torbjorn() }, 1);
 
-            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(50);
+            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(75);
         }
     }
 }

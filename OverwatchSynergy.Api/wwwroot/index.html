@@ -1,5 +1,6 @@
 ﻿<html>
     <head>
+        <title>Aegis</title>
         <script src="lib/knockout-latest.js"></script>
         <script src="lib/jquery.js"></script>
         <script src="overwatch-suggest.js"></script>
@@ -7,42 +8,31 @@
         <link rel="stylesheet" type="text/css" href="overwatch-suggest.css">
     </head>
     <body>
-        <div class="opponents">
-            <h2>Opponents</h2>
-            <!-- ko foreach: Opponents -->
-            <div class="hero">
-                <span class="name" data-bind="text: Name"></span>
-                <span class="remove" data-bind="click: Remove"></span>
+        <div class="teams">
+            <div class="opponents">
+                <!-- ko foreach: OpponentsView -->
+                <div class="hero">
+                    <span class="name" data-bind="click: Click, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
+                </div>
+                <!-- /ko -->
             </div>
-            <!-- /ko -->
+            <div class="available-heroes" data-bind="foreach: AvailableHeroes">
+                <div class="hero">
+                    <span class="name" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
+                </div>
+            </div>
+            <div class="teammates">
+                <!-- ko foreach: TeammatesView -->
+                <div class="hero">
+                    <span class="name" data-bind="click: Click, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
+                </div>
+                <!-- /ko -->
+            </div>
         </div>
-        <div class="available-heroes">
-            <h2>Available Heroes</h2>
-            <!-- ko foreach: AvailableHeroes -->
+        <div class="suggested-heroes" data-bind="foreach: SuggestionsView">
             <div class="hero">
-                <span class="add-enemy" data-bind="click: AddAsOpponent" title="Add as Opponent"></span>
-                <span class="name" data-bind="text: Name"></span>
-                <span class="add-ally" data-bind="click: AddAsTeammate" title="Add as Teammate"></span>
+                <span class="name" data-bind="attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
             </div>
-            <!-- /ko -->
-        </div>
-        <div class="teammates">
-            <h2>Teammates</h2>
-            <!-- ko foreach: Teammates -->
-            <div class="hero">
-                <span class="name" data-bind="text: Name"></span>
-                <span class="remove" data-bind="click: Remove"></span>
-            </div>
-            <!-- /ko -->
-        </div>
-        <div class="suggested-heroes">
-            <h2>Suggested Heroes</h2>
-            <!-- ko foreach: WeightedSuggestions -->
-            <div class="hero">
-                <span class="name" data-bind="text: Hero.Name"></span>
-                <span class="weight" data-bind="text: Value"></span>
-            </div>
-            <!-- /ko -->
         </div>
     </body>
 </html>

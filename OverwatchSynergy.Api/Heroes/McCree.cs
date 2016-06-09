@@ -5,6 +5,7 @@ namespace OverwatchSynergy.Api.Heroes
 {
     public class McCree : Hero
     {
+        public override string Id => "mccree";
         public override string Name => "McCree";
         public override string Role => "Attack";
 
