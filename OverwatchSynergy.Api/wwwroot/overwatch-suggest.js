@@ -1,33 +1,34 @@
-var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
+var TeamSlotViewModel = function (calculatorViewModel) {
     var _this = this;
 
-    this.Name = hero ? hero.Name : "Add Hero";
-
-    this.IsEmpty = !hero;
+    this.Hero = ko.observable();
+    this.Name = ko.pureComputed(function () {
+        var hero = ko.unwrap(this.Hero);
+        return hero && hero.Name;
+    });
+    this.IsSelected = ko.observable(false);
 
     this.GetBackgroundImage = function () {
-        if (!this.IsEmpty) {
+        var hero = ko.unwrap(this.Hero);
+
+        if (hero) {
             return "url('img/" + hero.Id + ".png')";
         }
         return "none"
     }
 
     this.GetClass = function () {
-        if (this.IsAdding) {
+        if (this.IsSelected()) {
             return "adding";
         }
-        if (this.IsEmpty) {
+        if (!this.Hero()) {
             return "empty";
         }
     }
 
     this.Click = function () {
-        if (this.IsEmpty) {
-            calculatorViewModel.SelectedTeam(team);
-        }
-        if (team && typeof(team.remove) === 'function') {
-            team.remove(this);
-        }
+        this.Hero(null);
+        calculatorViewModel.SelectedSlot(this);
     }
 
 }
@@ -42,9 +43,10 @@ var AvailableHeroViewModel = function (hero, calculatorViewModel) {
     }
 
     this.Add = function () {
-        var selectedTeam = calculatorViewModel.SelectedTeam()
-        if (selectedTeam && selectedTeam().length < 6) {
-            calculatorViewModel.SelectedTeam().push(new TeamMemberViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam()));
+        var selectedSlot = calculatorViewModel.SelectedSlot();
+        if (selectedSlot) {
+            calculatorViewModel.SelectedSlot().Hero(hero);
+            calculatorViewModel.SelectNextAvailableSlot();
         }
     }
 }
@@ -71,43 +73,49 @@ var SuggestedHeroViewModel = function (hero, weight) {
 
 var CalculatorViewModel = function (heroesJson) {
     var _this = this,
-        opponents = ko.observableArray(),
-        teammates = ko.observableArray(),
         suggestions = ko.observable([]);
 
-    var addEmpties = function (currentTeam) {
-        var team = currentTeam.slice(0);
-        for (var i = team.length; i < 6; i++) {
-            var teamMemberViewModel = new TeamMemberViewModel(
-                null,
-                _this,
-                currentTeam);
+    this.Opponents = ko.observableArray(Array(6).fill(0).map(function () { return new TeamSlotViewModel(_this); } ));
+    this.Teammates = ko.observableArray(Array(6).fill(0).map(function () { return new TeamSlotViewModel(_this); }));
+        
+    this.SelectedSlot = ko.observable(this.Opponents()[0]);
 
-            if (i == currentTeam().length && _this.SelectedTeam() == currentTeam) {
-                teamMemberViewModel.IsAdding = true;
-            }
+    this.SelectedSlot.subscribe(function (currentSelection) {
+        currentSelection && currentSelection.IsSelected(false);
+    }, null, "beforeChange");
+    this.SelectedSlot.subscribe(function (newSelection) {
+        newSelection && newSelection.IsSelected(true);
+    });
 
-            team.push(teamMemberViewModel);
+    this.SelectNextAvailableSlot = function () {
+        var currentSelection = this.SelectedSlot();
+        var isOpponentSelected = this.Opponents().some(function (t) {
+            return t === currentSelection
+        });
+        if (isOpponentSelected) {
+            var nextAvailableSlot = this.Opponents().find(function (t) {
+                return t.Hero() == null;
+            });
+            this.SelectedSlot(nextAvailableSlot);
         }
-        return team;
-    }
 
-    this.SelectedTeam = ko.observable(opponents);
+        var isTeammateSelected = this.Teammates().some(function (t) {
+            return t === currentSelection
+        });
+        if (isTeammateSelected) {
+            var nextAvailableSlot = this.Teammates().find(function (t) {
+                return t.Hero() == null;
+            });
+            this.SelectedSlot(nextAvailableSlot);
+        }
+    }
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new AvailableHeroViewModel(hero, _this);
     });
 
-    this.OpponentsView = ko.pureComputed(function() {
-        return addEmpties(opponents);
-    });
-
-    this.TeammatesView = ko.pureComputed(function () {
-        return addEmpties(teammates);
-    });
-
     this.SuggestionsView = ko.pureComputed(function () {
-        if (opponents().length == 0 && teammates().length == 0) {
+        if (_this.Opponents().length == 0 && _this.Teammates().length == 0) {
             return Array(3).fill(new SuggestedHeroViewModel())
         }
         return suggestions()
@@ -119,8 +127,8 @@ var CalculatorViewModel = function (heroesJson) {
 
     function getUpdatedScores() {
         var data = {
-            Opponents: opponents().map(function (h) { return h.Name; }),
-            Teammates: teammates().map(function (h) { return h.Name; }),
+            Opponents: _this.Opponents().map(function (h) { return h.Name; }),
+            Teammates: _this.Teammates().map(function (h) { return h.Name; }),
         }
         return $.post({
             url: "../calculator/GetOverallScoresForAllHeroes",
@@ -131,8 +139,8 @@ var CalculatorViewModel = function (heroesJson) {
         });
     }
 
-    opponents.subscribe(getUpdatedScores);
-    teammates.subscribe(getUpdatedScores);
+    this.Opponents.subscribe(getUpdatedScores);
+    this.Teammates.subscribe(getUpdatedScores);
 };
 
 $(document).ready(function () {

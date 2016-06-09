@@ -9,24 +9,20 @@
     </head>
     <body>
         <div class="teams">
-            <div class="opponents">
-                <!-- ko foreach: OpponentsView -->
+            <div class="opponents" data-bind="foreach: Opponents">
                 <div class="hero">
                     <span class="name" data-bind="click: Click, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
-                <!-- /ko -->
             </div>
             <div class="available-heroes" data-bind="foreach: AvailableHeroes">
                 <div class="hero">
                     <span class="name" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
             </div>
-            <div class="teammates">
-                <!-- ko foreach: TeammatesView -->
+            <div class="teammates" data-bind="foreach: Teammates">
                 <div class="hero">
                     <span class="name" data-bind="click: Click, attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
                 </div>
-                <!-- /ko -->
             </div>
         </div>
         <div class="suggested-heroes" data-bind="foreach: SuggestionsView">
