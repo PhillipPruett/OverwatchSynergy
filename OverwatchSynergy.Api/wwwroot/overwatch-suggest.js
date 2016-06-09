@@ -1,4 +1,6 @@
 var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
+    var _this = this;
+
     this.Name = hero ? hero.Name : "Add Hero";
 
     this.IsEmpty = !hero;
@@ -11,10 +13,10 @@ var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
     }
 
     this.GetClass = function () {
+        if (this.IsAdding) {
+            return "adding";
+        }
         if (this.IsEmpty) {
-            if (this.IsAdding) {
-                return "adding";
-            }
             return "empty";
         }
     }
@@ -81,6 +83,10 @@ var CalculatorViewModel = function (heroesJson) {
                 _this,
                 currentTeam);
 
+            if (i == currentTeam().length && _this.SelectedTeam() == currentTeam) {
+                teamMemberViewModel.IsAdding = true;
+            }
+
             team.push(teamMemberViewModel);
         }
         return team;
@@ -108,7 +114,6 @@ var CalculatorViewModel = function (heroesJson) {
             .slice(0, 3)
             .map(function (weight) {
                 return new SuggestedHeroViewModel(weight.Hero, weight.Value)
-                
             });
     });
 
