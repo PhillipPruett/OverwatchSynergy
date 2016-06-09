@@ -1,7 +1,7 @@
 var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
-    this.Name = hero.Name;
+    this.Name = hero ? hero.Name : "Add Hero";
 
-    this.IsEmpty = hero.Id === undefined;
+    this.IsEmpty = !hero;
 
     this.GetBackgroundImage = function () {
         if (!this.IsEmpty) {
@@ -11,7 +11,7 @@ var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
     }
 
     this.GetClass = function () {
-        if (!hero.Id) {
+        if (this.IsEmpty) {
             if (this.IsAdding) {
                 return "adding";
             }
@@ -20,7 +20,7 @@ var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
     }
 
     this.Click = function () {
-        if (!hero.Id) {
+        if (this.IsEmpty) {
             calculatorViewModel.SelectedTeam(team);
         }
         if (team && typeof(team.remove) === 'function') {
@@ -40,18 +40,31 @@ var AvailableHeroViewModel = function (hero, calculatorViewModel) {
     }
 
     this.Add = function () {
-        if (calculatorViewModel.SelectedTeam()().length < 6) {
+        var selectedTeam = calculatorViewModel.SelectedTeam()
+        if (selectedTeam && selectedTeam().length < 6) {
             calculatorViewModel.SelectedTeam().push(new TeamMemberViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam()));
         }
     }
 }
 
 var SuggestedHeroViewModel = function (hero, weight) {
-    this.Name = hero.Name;
-    this.GetBackgroundImage = function () {
-        return "url('img/" + hero.Id + ".png')";
-    }
+    this.Name = hero ? hero.Name : "";
     this.Weight = weight;
+
+    this.IsEmpty = !hero;
+
+    this.GetBackgroundImage = function () {
+        if (!this.IsEmpty) {
+            return "url('img/" + hero.Id + ".png')";
+        }
+        return "none"
+    }
+
+    this.GetClass = function () {
+        if (this.IsEmpty) {
+            return "empty";
+        }
+    }
 }
 
 var CalculatorViewModel = function (heroesJson) {
@@ -64,9 +77,7 @@ var CalculatorViewModel = function (heroesJson) {
         var team = currentTeam.slice(0);
         for (var i = team.length; i < 6; i++) {
             var teamMemberViewModel = new TeamMemberViewModel(
-                {
-                    Name: "Add Hero",
-                },
+                null,
                 _this,
                 currentTeam);
 
@@ -75,7 +86,7 @@ var CalculatorViewModel = function (heroesJson) {
         return team;
     }
 
-    this.SelectedTeam = ko.observable([]);
+    this.SelectedTeam = ko.observable(opponents);
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new AvailableHeroViewModel(hero, _this);
@@ -90,6 +101,9 @@ var CalculatorViewModel = function (heroesJson) {
     });
 
     this.SuggestionsView = ko.pureComputed(function () {
+        if (opponents().length == 0 && teammates().length == 0) {
+            return Array(3).fill(new SuggestedHeroViewModel())
+        }
         return suggestions()
             .slice(0, 3)
             .map(function (weight) {

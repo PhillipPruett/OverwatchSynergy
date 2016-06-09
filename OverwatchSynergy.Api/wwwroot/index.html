@@ -31,7 +31,7 @@
         </div>
         <div class="suggested-heroes" data-bind="foreach: SuggestionsView">
             <div class="hero">
-                <span class="name" data-bind="attr: { title: Name }, style: { backgroundImage: GetBackgroundImage() }"></span>
+                <span class="name" data-bind="attr: { title: Name }, css: GetClass(), style: { backgroundImage: GetBackgroundImage() }"></span>
             </div>
         </div>
     </body>
