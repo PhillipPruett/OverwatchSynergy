@@ -5,6 +5,7 @@ using OverwatchSynergy.Api;
 using OverwatchSynergy.Api.Heroes;
 using System.Linq;
 using FluentAssertions;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Tests
 {
@@ -14,9 +15,9 @@ namespace OverwatchSynergy.Tests
         [Test]
         public void overallscores_can_be_retrieved()
         {
-            var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] { new Reaper() }, new[] { new Torbjorn() }, 1);
+            var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] { new Reaper() }, new[] { new Torbjorn() }, new NeutralCapture());
 
-            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(75);
+            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(25);
         }
     }
 }

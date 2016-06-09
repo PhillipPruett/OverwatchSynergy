@@ -8,6 +8,9 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "zarya";
         public override string Name => "Zarya";
         public override string Role => "Tank";
+        protected override double CountersMultiplier => 1.0;
+        protected override double SynergyMultiplier => 1.0;
+        protected override double ObjectiveMultiplier => 1.0;
 
         public override int GetSynergyValue(Hero hero)
         {
@@ -53,6 +56,11 @@ namespace OverwatchSynergy.Api.Heroes
                 return 0;
             }
             return 50;
+        }
+
+        public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
+        {
+            return 1.0;
         }
     }
 }

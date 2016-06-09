@@ -8,6 +8,9 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "pharah";
         public override string Name => "Pharah";
         public override string Role => "Attack";
+        protected override double CountersMultiplier => 1.0;
+        protected override double SynergyMultiplier => 1.0;
+        protected override double ObjectiveMultiplier => 1.0;
 
         public override int GetSynergyValue(Hero hero)
         {
@@ -32,6 +35,10 @@ namespace OverwatchSynergy.Api.Heroes
             {
                 return 100;
             }
+            if (hero is Lucio)
+            {
+                return 100;
+            }
             if (hero is Widowmaker)
             {
                 return 0;
@@ -45,6 +52,11 @@ namespace OverwatchSynergy.Api.Heroes
                 return 0;
             }
             return 50;
+        }
+
+        public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
+        {
+            return 1.0;
         }
     }
 }

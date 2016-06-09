@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Api.Heroes
 {
@@ -8,6 +9,9 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "lucio";
         public override string Name => "Lúcio";
         public override string Role => "Support";
+        protected override double CountersMultiplier => 1.0;
+        protected override double SynergyMultiplier => 1.0;
+        protected override double ObjectiveMultiplier => 1.0;
 
         public override int GetSynergyValue(Hero hero)
         {
@@ -53,6 +57,15 @@ namespace OverwatchSynergy.Api.Heroes
                 return 0;
             }
             return 50;
+        }
+
+        public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
+        {
+            if (objectiveType is NeutralCapture)
+            {
+                return 1.5;
+            }
+            return 1.0;
         }
     }
 }

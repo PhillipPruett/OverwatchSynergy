@@ -177,6 +177,12 @@
     <Compile Include="Heroes\Zarya.cs" />
     <Compile Include="Heroes\Zenyatta.cs" />
     <Compile Include="HomeController.cs" />
+    <Compile Include="ObjectiveType.cs" />
+    <Compile Include="ObjectiveTypes\AttackCapture.cs" />
+    <Compile Include="ObjectiveTypes\AttackPushCart.cs" />
+    <Compile Include="ObjectiveTypes\DefenseCapture.cs" />
+    <Compile Include="ObjectiveTypes\DefensePushCart.cs" />
+    <Compile Include="ObjectiveTypes\NeutralCapture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="HeroesController.cs" />
