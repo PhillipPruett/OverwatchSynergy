@@ -54,11 +54,9 @@ var SuggestedHero = function (hero, weight) {
     this.Name = hero ? hero.Name : "";
     this.Weight = weight;
 
-    this.IsEmpty = !hero;
+    this.BackgroundImage = hero ? "url('img/" + hero.Id + ".png')" : "none";
 
-    this.BackgroundImage = this.IsEmpty ? "none" : "url('img/" + hero.Id + ".png')";
-
-    this.Class = this.IsEmpty ? "empty" : "";
+    this.Class = !hero ? "empty" : "";
 }
 
 var CalculatorViewModel = function (heroesJson) {
@@ -106,7 +104,7 @@ var CalculatorViewModel = function (heroesJson) {
         return new AvailableHero(hero, _this);
     });
 
-    this.SuggestionsView = ko.pureComputed(function () {
+    this.Suggestions = ko.pureComputed(function () {
         var noHeroesAreSelected = !_this.Opponents.concat(_this.Teammates).some(function (s) { return s.Hero() });
         if (noHeroesAreSelected) {
             return Array(3).fill(new SuggestedHero())
