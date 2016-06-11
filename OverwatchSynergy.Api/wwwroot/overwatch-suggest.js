@@ -27,7 +27,7 @@ var TeamSlot = function (calculatorViewModel) {
         }
     });
 
-    this.Click = function () {
+    this.Select = function () {
         this.Hero(null);
         calculatorViewModel.SelectedSlot(this);
     }
@@ -50,13 +50,19 @@ var AvailableHero = function (hero, calculatorViewModel) {
     }
 }
 
-var SuggestedHero = function (hero, weight) {
+var SuggestedHero = function (calculatorViewModel, hero, weight) {
     this.Name = hero ? hero.Name : "";
     this.Weight = weight;
 
     this.BackgroundImage = hero ? "url('img/" + hero.Id + ".png')" : "none";
 
     this.Class = !hero ? "empty" : "";
+
+    this.Add = function () {
+        calculatorViewModel.SelectNextAvailableTeammateSlot();
+        calculatorViewModel.SelectedSlot().Hero(hero);
+        calculatorViewModel.SelectNextAvailableSlot();
+    }
 }
 
 var CalculatorViewModel = function (heroesJson) {
@@ -100,6 +106,13 @@ var CalculatorViewModel = function (heroesJson) {
         }
     }
 
+    this.SelectNextAvailableTeammateSlot = function () {
+        var nextAvailableSlot = this.Teammates.find(function (t) {
+            return t.Hero() == null;
+        });
+        this.SelectedSlot(nextAvailableSlot);
+    }
+
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new AvailableHero(hero, _this);
     });
@@ -107,13 +120,13 @@ var CalculatorViewModel = function (heroesJson) {
     this.Suggestions = ko.pureComputed(function () {
         var noHeroesAreSelected = !_this.Opponents.concat(_this.Teammates).some(function (s) { return s.Hero() });
         if (noHeroesAreSelected) {
-            return Array(3).fill(new SuggestedHero())
+            return Array(3).fill(new SuggestedHero(_this))
         }
 
         return suggestions()
             .slice(0, 3)
             .map(function (weight) {
-                return new SuggestedHero(weight.Hero, weight.Value)
+                return new SuggestedHero(_this, weight.Hero, weight.Value)
             });
     });
 
