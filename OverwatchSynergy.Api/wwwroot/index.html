@@ -11,7 +11,7 @@
         <div class="teams">
             <div class="opponents" data-bind="foreach: Opponents">
                 <div class="hero">
-                    <span class="name" data-bind="click: Click, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
+                    <span class="name" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
                 </div>
             </div>
             <div class="available-heroes" data-bind="foreach: AvailableHeroes">
@@ -21,13 +21,13 @@
             </div>
             <div class="teammates" data-bind="foreach: Teammates">
                 <div class="hero">
-                    <span class="name" data-bind="click: Click, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
+                    <span class="name" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
                 </div>
             </div>
         </div>
         <div class="suggested-heroes" data-bind="foreach: Suggestions">
             <div class="hero">
-                <span class="name" data-bind="attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
+                <span class="name" data-bind="click: Add, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
             </div>
         </div>
     </body>
