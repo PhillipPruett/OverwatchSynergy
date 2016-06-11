@@ -116,6 +116,10 @@
     <Content Include="wwwroot\img\dva.png" />
     <Content Include="wwwroot\img\genji.png" />
     <Content Include="wwwroot\img\hanzo.png" />
+    <Content Include="wwwroot\img\IconDefense.png" />
+    <Content Include="wwwroot\img\IconAttack.png" />
+    <Content Include="wwwroot\img\IconSupport.png" />
+    <Content Include="wwwroot\img\IconTank.png" />
     <Content Include="wwwroot\img\junkrat.png" />
     <Content Include="wwwroot\img\lucio.png" />
     <Content Include="wwwroot\img\mccree.png" />

@@ -73,11 +73,11 @@ namespace OverwatchSynergy.Api
         private static Weight GetOverallScore(Hero hero, IEnumerable<Hero> enemyTeam, IEnumerable<Hero> team, double relativeSynergyWeight = 1)
         {
             var counterValue = enemyTeam.Any()
-                               ? (int)enemyTeam.Average(enemy => enemy.GetStrengthAgainstValue(hero)) 
+                               ? (int)enemyTeam.Average(enemy => hero.GetStrengthAgainstValue(enemy)) 
                                : 50;
             var synergyValue = team.Any()
-                               ? (int)team.Average(teamMate => teamMate.GetSynergyValue(hero))
-                               : 50;
+                               ? (int)team.Average(teammate => hero.GetSynergyValue(teammate))
+                               : 0;
             return new Weight()
             {
                 Hero = hero,
