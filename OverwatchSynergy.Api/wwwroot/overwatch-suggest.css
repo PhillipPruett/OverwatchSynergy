@@ -46,12 +46,12 @@ body > div {
     margin: 5px;
 }
 
-.opponents, .opponents .hero .name {
+.opponents, .opponents .hero .portrait {
     color: #ee2c20;
     border-color: #ee2c20;
 }
 
-.teammates, .teammates .hero .name {
+.teammates, .teammates .hero .portrait {
     color: #00a5e2;
     border-color: #00a5e2;
 }
@@ -79,7 +79,7 @@ body > div {
     content: "Suggested Heroes";
 }
 
-.suggested-heroes .hero:first-child .name {
+.suggested-heroes .hero:first-child .portrait {
     height: 100px;
     width: 112px;
 }
@@ -89,7 +89,7 @@ body > div {
     margin: 4px;
 }
 
-.hero .name {
+.hero .portrait {
     border: 1px solid;
     border-radius: 3px;
 }
@@ -98,11 +98,11 @@ body > div {
     border-style: dashed;
 }
 
-.hero .name.adding {
+.hero .portrait.adding {
     border-color: #00ff00;
 }
 
-.hero .name::after{
+.hero .portrait::after{
     font-family: Courier New, Courier, monospace;
     margin: auto;
     font-size: 24px;
@@ -125,7 +125,7 @@ body > div {
     background-color: #ff9c00;
 }
 
-.name {
+.portrait {
     height: 50px;
     width: 56px;
     background-size:contain;
