@@ -56,9 +56,26 @@ body > div {
     border-color: #00a5e2;
 }
 
+.Attack::before {
+    content: "Att"
+}
+
+.Defense::before {
+    content: "Def"
+}
+
+.Tank::before {
+    content: "Tnk"
+}
+
+.Support::before {
+    content: "Sup"
+}
+
+
 .available-heroes {
     flex-flow: row wrap;
-    width: 750px;
+    width: 850px;
     height: 200px;
 }
 

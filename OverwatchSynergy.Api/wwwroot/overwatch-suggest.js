@@ -38,6 +38,7 @@ var AvailableHero = function (hero, calculatorViewModel) {
     var _this = this;
 
     this.Name = hero.Name;
+    this.Role = hero.Role;
 
     this.BackgroundImage = "url('img/" + hero.Id + ".png')";
     
@@ -115,6 +116,19 @@ var CalculatorViewModel = function (heroesJson) {
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
         return new AvailableHero(hero, _this);
+    });
+
+    var roles = $.uniqueSort(this.AvailableHeroes.map(function (hero) {
+        return hero.Role;
+    }));
+
+    this.AvailableHeroesByRole = roles.map(function (role) {
+        return {
+            Role: role,
+            AvailableHeroes: _this.AvailableHeroes.filter(function(hero){
+                return hero.Role == role;
+            })
+        }
     });
 
     this.Suggestions = ko.pureComputed(function () {
