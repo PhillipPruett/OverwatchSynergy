@@ -118,9 +118,7 @@ var CalculatorViewModel = function (heroesJson) {
         return new AvailableHero(hero, _this);
     });
 
-    var roles = $.uniqueSort(this.AvailableHeroes.map(function (hero) {
-        return hero.Role;
-    }));
+    var roles = ["Attack", "Defense", "Tank", "Support"];
 
     this.AvailableHeroesByRole = roles.map(function (role) {
         return {
