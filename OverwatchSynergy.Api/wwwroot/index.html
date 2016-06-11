@@ -14,9 +14,11 @@
                     <span class="portrait" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
                 </div>
             </div>
-            <div class="available-heroes" data-bind="foreach: AvailableHeroes">
-                <div class="hero">
-                    <span class="portrait" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></span>
+            <div class="available-heroes" data-bind="foreach: AvailableHeroesByRole">
+                <div data-bind="css: Role, foreach: AvailableHeroes">
+                    <div class="portrait">
+                        <span class="name" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></span>
+                    </div>
                 </div>
             </div>
             <div class="teammates" data-bind="foreach: Teammates">

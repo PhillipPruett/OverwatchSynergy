@@ -56,9 +56,33 @@ body > div {
     border-color: #00a5e2;
 }
 
+.available-heroes > div {
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    margin-left:10px;
+}
+
+.Attack {
+    background-image: url("img/IconAttack.png");
+}
+
+.Defense {
+    background-image: url("img/IconDefense.png");
+}
+
+.Tank {
+    background-image: url("img/IconTank.png");
+}
+
+.Support {
+    background-image: url("img/IconSupport.png");
+}
+
+
 .available-heroes {
     flex-flow: row wrap;
-    width: 750px;
+    width: 870px;
     height: 200px;
 }
 

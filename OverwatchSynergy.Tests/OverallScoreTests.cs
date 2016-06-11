@@ -14,7 +14,7 @@ namespace OverwatchSynergy.Tests
         {
             var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] {new Reaper()}, new[] {new Torbjorn()}, 1);
 
-            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(75);
+            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(50);
         }
 
         [Test]
@@ -25,31 +25,31 @@ namespace OverwatchSynergy.Tests
             Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[0], 1)
                       .Take(6).Select(w => w.Hero.Id).Should().BeEquivalentTo(new[]
                                                                       {
-                                                                          new Genji().Id,
-                                                                          new Roadhog().Id,
-                                                                          new Lucio().Id,
-                                                                          new McCree().Id,
-                                                                          new Pharah().Id,
-                                                                          new Soldier76().Id
+                                                                          new Hanzo().Id,
+                                                                          new Junkrat().Id,
+                                                                          new Widowmaker().Id,
+                                                                          new Reinhardt().Id,
+                                                                          new Zarya().Id,
+                                                                          new Mercy().Id
                                                                       });
         }
 
         [Test]
-        public void a_good_team_is_iteratively_suggested_against_team_tobjorn()
+        public void a_better_team_is_iteratively_suggested_against_team_tobjorn()
         {
             var tobjornTeam = new[] {new Torbjorn(), new Torbjorn(), new Torbjorn(), new Torbjorn(), new Torbjorn(), new Torbjorn()};
 
             Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[0], 1)
-                      .First().Hero.Id.Should().Be(new Genji().Id);
-            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Genji()}, 1)
-                      .First().Hero.Id.Should().Be(new Lucio().Id);
-            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Genji(), new Lucio()}, 1)
-                      .First().Hero.Id.Should().Be(new Roadhog().Id);
-            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Genji(), new Lucio(), new Roadhog(),}, 1)
-                      .First().Hero.Id.Should().Be(new McCree().Id);
-            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Genji(), new Lucio(), new Roadhog(), new McCree()}, 1)
-                      .First().Hero.Id.Should().Be(new Pharah().Id);
-            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Genji(), new Lucio(), new Roadhog(), new McCree(), new Pharah()}, 1)
+                      .First().Hero.Id.Should().Be(new Hanzo().Id);
+            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Hanzo()}, 1)
+                      .First().Hero.Id.Should().Be(new Zarya().Id);
+            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Hanzo(), new Zarya()}, 1)
+                      .First().Hero.Id.Should().Be(new Tracer().Id);
+            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Hanzo(), new Zarya(), new Tracer(),}, 1)
+                      .First().Hero.Id.Should().Be(new Junkrat().Id);
+            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Hanzo(), new Zarya(), new Tracer(), new Junkrat()}, 1)
+                      .First().Hero.Id.Should().Be(new Mei().Id);
+            Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Hanzo(), new Zarya(), new Tracer(), new Junkrat(), new Mei()}, 1)
                       .First().Hero.Id.Should().Be(new Mercy().Id);
         }
     }
