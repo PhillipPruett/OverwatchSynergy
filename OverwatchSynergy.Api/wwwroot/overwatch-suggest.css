@@ -82,8 +82,8 @@ body > div {
 
 .available-heroes {
     flex-flow: row wrap;
-    width: 870px;
-    height: 200px;
+    max-width: 870px;
+    min-height: 200px;
 }
 
 .suggested-heroes {
