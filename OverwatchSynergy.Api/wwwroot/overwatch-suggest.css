@@ -168,3 +168,18 @@ body > div {
     background-color: #FFB133;
 }
 
+@media (max-width:620px) {
+    body {
+        flex-direction:column;
+    }
+
+    .suggested-heroes {
+        height: 150px;
+        width: 300px;
+        min-width: 300px;
+
+        align-self: center;
+
+        flex-flow: column wrap;
+    }
+}
