@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Api.Heroes
 {
@@ -9,8 +10,8 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Name => "Symmetra";
         public override string Role => "Support";
         protected override double CountersMultiplier => 1.0;
-        protected override double SynergyMultiplier => 1.0;
-        protected override double ObjectiveMultiplier => 1.0;
+        protected override double SynergyMultiplier => 1.2;
+        protected override double ObjectiveMultiplier => 2.0;
 
         public override int GetSynergyValue(Hero hero)
         {
@@ -52,6 +53,23 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
         {
+            if (objectiveType is NeutralCapture)
+            {
+                return 0.3;
+            }
+            if (objectiveType is AttackPushCart)
+            {
+                return 0.5;
+            }
+            if (objectiveType is AttackCapture)
+            {
+                return 0.5;
+            }
+            if (objectiveType is DefenseCapture)
+            {
+                return 1.5;
+            }
+
             return 1.0;
         }
     }

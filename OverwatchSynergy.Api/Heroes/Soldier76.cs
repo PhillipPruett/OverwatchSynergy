@@ -8,9 +8,9 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "soldier76";
         public override string Name => "Soldier: 76";
         public override string Role => "Attack";
-        protected override double CountersMultiplier => 1.0;
-        protected override double SynergyMultiplier => 1.0;
-        protected override double ObjectiveMultiplier => 1.0;
+        protected override double CountersMultiplier => 1.5;
+        protected override double SynergyMultiplier => 1.5;
+        protected override double ObjectiveMultiplier => 0.8;
 
         public override int GetSynergyValue(Hero hero)
         {

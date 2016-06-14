@@ -9,7 +9,7 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Name => "Hanzo";
         public override string Role => "Defense";
         protected override double CountersMultiplier => 1.0;
-        protected override double SynergyMultiplier => 1.0;
+        protected override double SynergyMultiplier => 0.7;
         protected override double ObjectiveMultiplier => 1.0;
 
         public override int GetSynergyValue(Hero hero)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Api.Heroes
 {
@@ -10,8 +11,8 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "genji";
         public override string Name => "Genji";
         public override string Role => "Attack";
-        protected override double CountersMultiplier => 1.0;
-        protected override double SynergyMultiplier => 1.0;
+        protected override double CountersMultiplier => 2.0;
+        protected override double SynergyMultiplier => 0.5;
         protected override double ObjectiveMultiplier => 1.0;
 
         public override int GetSynergyValue(Hero hero)
@@ -37,10 +38,6 @@ namespace OverwatchSynergy.Api.Heroes
             {
                 return 100;
             }
-            if (hero is Mercy)
-            {
-                return 0;
-            }
             if (hero is Winston)
             {
                 return 0;
@@ -54,6 +51,22 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
         {
+            if (objectiveType is NeutralCapture)
+            {
+                return 0.5;
+            }
+            if (objectiveType is AttackCapture)
+            {
+                return 1.2;
+            }
+            if (objectiveType is DefenseCapture)
+            {
+                return 0.7;
+            }
+            if (objectiveType is DefensePushCart)
+            {
+                return 0.7;
+            }
             return 1.0;
         }
     }

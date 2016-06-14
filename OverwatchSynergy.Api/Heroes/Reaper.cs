@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Api.Heroes
 {
@@ -8,8 +9,8 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "reaper";
         public override string Name => "Reaper";
         public override string Role => "Attack";
-        protected override double CountersMultiplier => 1.0;
-        protected override double SynergyMultiplier => 1.0;
+        protected override double CountersMultiplier => 1.5;
+        protected override double SynergyMultiplier => 1.5;
         protected override double ObjectiveMultiplier => 1.0;
 
 
@@ -53,6 +54,15 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
         {
+            if (objectiveType is NeutralCapture)
+            {
+                return 1.5;
+            }
+            if (objectiveType is DefensePushCart)
+            {
+                return 0.7;
+            }
+
             return 1.0;
         }
     }

@@ -17,21 +17,22 @@ namespace OverwatchSynergy.Tests
         [Test]
         public void overallscores_can_be_retrieved_with_weighted_objective()
         {
-            var overallscores = Calculator.GetOverallScoresForAllHeroes(new Hero[1] , new Hero[1], new NeutralCapture());
+            var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] {new Mercy()} , new[] {new Reinhardt()}, new NeutralCapture());
 
-            overallscores.Single(s => s.Hero is Lucio).Value.Should().Be(37.5);
+            overallscores.Single(s => s.Hero is Lucio).Value.Should().Be(52.5);
         }
 
         [Test]
         public void objective_weight_affects_overallscores()
         {
-            var attackScores = Calculator.GetOverallScoresForAllHeroes(new Hero[1], new Hero[1], new AttackCapture());
+            var attackScores = Calculator.GetOverallScoresForAllHeroes(new[] { new Mercy() }, new[] { new Reinhardt() }, new AttackCapture());
 
-            attackScores.Single(s => s.Hero is Lucio).Value.Should().Be(25);
 
-            var overallscores = Calculator.GetOverallScoresForAllHeroes(new Hero[1], new Hero[1], new NeutralCapture());
+            var neutralScores = Calculator.GetOverallScoresForAllHeroes(new[] { new Mercy() }, new[] { new Reinhardt() }, new NeutralCapture());
 
-            overallscores.Single(s => s.Hero is Lucio).Value.Should().Be(37.5);
+            attackScores.Single(s => s.Hero is Lucio)
+                .Value.Should()
+                .NotBe(neutralScores.Single(s => s.Hero is Lucio).Value);
         }
     }
 }
