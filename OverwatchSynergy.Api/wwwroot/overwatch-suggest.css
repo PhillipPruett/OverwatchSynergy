@@ -12,6 +12,7 @@ body, div {
     align-content: center;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 body {
@@ -35,15 +36,14 @@ body > div {
     flex-direction: column;
 }
 
-.teams {
-    flex-direction: column;
-}
-
-.teams > div {
-    border-width: 3px;
-    border-style: solid;
+.structural {
+    border: 3px solid;
     border-radius: 10px;
     margin: 5px;
+}
+
+.teams {
+    flex-direction: column;
 }
 
 .opponents, .opponents .hero {
@@ -87,11 +87,10 @@ body > div {
 }
 
 .suggested-heroes {
-    border: 3px solid;
-    border-radius: 10px;
+    color: #ff9c00;
     border-color: #ff9c00;
+    border-top:none;
 
-    margin: 5px;
     height: 200px;
     width: 150px;
     min-width: 150px;
@@ -101,8 +100,12 @@ body > div {
     flex-flow: row wrap;
 }
 
-.suggested-heroes::after {
+.suggested-heroes::before {
     content: "Suggested Heroes";
+    position: absolute;
+    width:100%;
+    left:0px;
+    top:-8px;
 }
 
 .suggested-heroes .hero:first-child {
@@ -168,3 +171,18 @@ body > div {
     background-color: #FFB133;
 }
 
+@media (max-width:620px) {
+    body {
+        flex-direction:column;
+    }
+
+    .suggested-heroes {
+        height: 150px;
+        width: 300px;
+        min-width: 300px;
+
+        align-self: center;
+
+        flex-flow: column wrap;
+    }
+}

@@ -9,19 +9,19 @@
     </head>
     <body>
         <div class="teams">
-            <div class="opponents" data-bind="foreach: Opponents">
+            <div class="opponents structural" data-bind="foreach: Opponents">
                 <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
             </div>
-            <div class="available-heroes" data-bind="foreach: AvailableHeroesByRole">
+            <div class="available-heroes structural" data-bind="foreach: AvailableHeroesByRole">
                 <div data-bind="css: Role, foreach: AvailableHeroes">
                     <div class="hero" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></div>
                 </div>
             </div>
-            <div class="teammates" data-bind="foreach: Teammates">
+            <div class="teammates structural" data-bind="foreach: Teammates">
                 <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
             </div>
         </div>
-        <div class="suggested-heroes" data-bind="foreach: Suggestions">
+        <div class="suggested-heroes structural" data-bind="foreach: Suggestions">
             <div class="hero" data-bind="click: Add, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
         </div>
     </body>
