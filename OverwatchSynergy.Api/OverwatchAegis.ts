@@ -1,16 +1,34 @@
-﻿var TeamSlot = function (calculatorViewModel) {
-    var _this = this;
+﻿interface Hero {
+    Name: string;
+    Id: string;
+    Role: string;
+}
 
-    this.Hero = ko.observable(null);
-    this.IsSelected = ko.observable(false);
+interface RoleGrouping {
+    Role: string;
+    AvailableHeroes: AvailableHero[];
+}
 
-    this.Name = ko.computed(function () {
-        var hero = ko.unwrap(_this.Hero);
+interface WeightedHero {
+    Value: number;
+    Hero: Hero;
+}
+
+class TeamSlot {
+    constructor(private calculatorViewModel: CalculatorViewModel) {
+        this.Hero.subscribe(calculatorViewModel.UpdateScores);
+    }
+
+    Hero = ko.observable<Hero>(null);
+    IsSelected = ko.observable(false);
+
+    Name = ko.computed(() => {
+        var hero = ko.unwrap(this.Hero);
         return hero && hero.Name;
     });
     
-    this.BackgroundImage = ko.pureComputed(function () {
-        var hero = ko.unwrap(_this.Hero);
+    BackgroundImage = ko.pureComputed(() => {
+        var hero = ko.unwrap(this.Hero);
 
         if (hero) {
             return "url('img/" + hero.Id + ".png')";
@@ -18,147 +36,151 @@
         return "none"
     });
 
-    this.Class = ko.pureComputed(function () {
-        if (_this.IsSelected()) {
+    Class = ko.pureComputed(() => {
+        if (this.IsSelected()) {
             return "adding";
         }
-        if (!_this.Hero()) {
+        if (!this.Hero()) {
             return "empty";
         }
     });
 
-    this.Select = function () {
+    Select = () => {
         this.Hero(null);
-        calculatorViewModel.SelectedSlot(this);
+        this.calculatorViewModel.SelectedSlot(this);
     }
-
 }
 
-var AvailableHero = function (hero, calculatorViewModel) {
-    var _this = this;
-
-    this.Name = hero.Name;
-    this.Role = hero.Role;
-
-    this.BackgroundImage = "url('img/" + hero.Id + ".png')";
+class AvailableHero {
+    constructor(private hero: Hero, private calculatorViewModel: CalculatorViewModel) {
+    }
     
-    this.Add = function () {
-        var selectedSlot = calculatorViewModel.SelectedSlot();
+    Name = this.hero.Name;
+    Role = this.hero.Role;
+
+    BackgroundImage = "url('img/" + this.hero.Id + ".png')";
+    
+    Add = () => {
+        var selectedSlot = this.calculatorViewModel.SelectedSlot();
         if (selectedSlot) {
-            calculatorViewModel.SelectedSlot().Hero(hero);
-            calculatorViewModel.SelectNextAvailableSlot();
+            this.calculatorViewModel.SelectedSlot().Hero(this.hero);
+            this.calculatorViewModel.SelectNextAvailableSlot();
         }
     }
 }
 
-var SuggestedHero = function (calculatorViewModel, hero, weight) {
-    this.Name = hero ? hero.Name : "";
-    this.Weight = weight;
+class SuggestedHero {
+    constructor(private calculatorViewModel: CalculatorViewModel, private hero?: Hero, public Weight?: number) { }
+    Name = this.hero ? this.hero.Name : "";
 
-    this.BackgroundImage = hero ? "url('img/" + hero.Id + ".png')" : "none";
+    BackgroundImage = this.hero ? "url('img/" + this.hero.Id + ".png')" : "none";
 
-    this.Class = !hero ? "empty" : "";
+    Class = !this.hero ? "empty" : "";
 
-    this.Add = function () {
-        calculatorViewModel.SelectNextAvailableTeammateSlot();
-        calculatorViewModel.SelectedSlot().Hero(hero);
-        calculatorViewModel.SelectNextAvailableSlot();
+    Add = () => {
+        this.calculatorViewModel.SelectNextAvailableTeammateSlot();
+        this.calculatorViewModel.SelectedSlot().Hero(this.hero);
+        this.calculatorViewModel.SelectNextAvailableSlot();
     }
 }
 
-var CalculatorViewModel = function (heroesJson) {
-    var _this = this,
-        suggestions = ko.observable([]);
+class CalculatorViewModel {
+    constructor(private heroesJson: Hero[]) {
+        this.SelectedSlot.subscribe(function (currentSelection) {
+            currentSelection && currentSelection.IsSelected(false);
+        }, null, "beforeChange");
+        this.SelectedSlot.subscribe(function (newSelection) {
+            newSelection && newSelection.IsSelected(true);
+        });
 
-    this.Opponents = Array(6).fill(0).map(function () { return new TeamSlot(_this); });
-    this.Teammates = Array(6).fill(0).map(function () { return new TeamSlot(_this); });
-        
-    this.SelectedSlot = ko.observable();
+        this.SelectedSlot(this.Opponents[0]);
 
-    this.SelectedSlot.subscribe(function (currentSelection) {
-        currentSelection && currentSelection.IsSelected(false);
-    }, null, "beforeChange");
-    this.SelectedSlot.subscribe(function (newSelection) {
-        newSelection && newSelection.IsSelected(true);
-    });
+        var AvailableHeroes = heroesJson.map(hero => {
+            return new AvailableHero(hero, this);
+        });
 
-    this.SelectedSlot(this.Opponents[0]);
+        let roles = ["Attack", "Defense", "Tank", "Support"];
 
-    this.SelectNextAvailableSlot = function () {
+        this.AvailableHeroesByRole = roles.map(role => {
+            return {
+                Role: role,
+                AvailableHeroes: AvailableHeroes.filter(hero => {
+                    return hero.Role == role;
+                })
+            }
+        });
+
+        for (var i = 0; i < 6; i++) {
+            this.Opponents.push(new TeamSlot(this));
+            this.Teammates.push(new TeamSlot(this));
+        }
+    };
+    
+    private suggestions = ko.observable<WeightedHero[]>([]);
+
+    Opponents: TeamSlot[];
+    Teammates: TeamSlot[];
+
+    SelectedSlot = ko.observable<TeamSlot>();
+
+    AvailableHeroesByRole: RoleGrouping[];
+
+    SelectNextAvailableSlot = () => {
         var currentSelection = this.SelectedSlot();
-        var isOpponentSelected = this.Opponents.some(function (t) {
+        var isOpponentSelected = this.Opponents.some(t => {
             return t === currentSelection
         });
         if (isOpponentSelected) {
-            var nextAvailableSlot = this.Opponents.find(function (t) {
+            var nextAvailableSlot = this.Opponents.find(t => {
                 return t.Hero() == null;
             });
             this.SelectedSlot(nextAvailableSlot);
         }
 
-        var isTeammateSelected = this.Teammates.some(function (t) {
+        var isTeammateSelected = this.Teammates.some(t => {
             return t === currentSelection
         });
         if (isTeammateSelected) {
-            var nextAvailableSlot = this.Teammates.find(function (t) {
+            var nextAvailableSlot = this.Teammates.find(t => {
                 return t.Hero() == null;
             });
             this.SelectedSlot(nextAvailableSlot);
         }
     }
 
-    this.SelectNextAvailableTeammateSlot = function () {
-        var nextAvailableSlot = this.Teammates.find(function (t) {
+    SelectNextAvailableTeammateSlot = () => {
+        var nextAvailableSlot = this.Teammates.find(t => {
             return t.Hero() == null;
         });
         this.SelectedSlot(nextAvailableSlot);
     }
 
-    this.AvailableHeroes = heroesJson.map(function (hero) {
-        return new AvailableHero(hero, _this);
-    });
-
-    var roles = ["Attack", "Defense", "Tank", "Support"];
-
-    this.AvailableHeroesByRole = roles.map(function (role) {
-        return {
-            Role: role,
-            AvailableHeroes: _this.AvailableHeroes.filter(function(hero){
-                return hero.Role == role;
-            })
-        }
-    });
-
-    this.Suggestions = ko.pureComputed(function () {
-        var noHeroesAreSelected = !_this.Opponents.concat(_this.Teammates).some(function (s) { return s.Hero() });
+    Suggestions = ko.pureComputed(() => {
+        var noHeroesAreSelected = !this.Opponents.concat(this.Teammates).some(s => s.Hero() != null);
         if (noHeroesAreSelected) {
-            return Array(3).fill(new SuggestedHero(_this))
+            return new Array(3).fill(new SuggestedHero(this))
         }
 
-        return suggestions()
+        return this.suggestions()
             .slice(0, 3)
             .map(function (weight) {
-                return new SuggestedHero(_this, weight.Hero, weight.Value)
+                return new SuggestedHero(this, weight.Hero, weight.Value)
             });
     });
 
-    this.UpdateScores = function() {
+    UpdateScores = () => {
         var data = {
-            Opponents: _this.Opponents.map(function (h) { return h.Name(); }),
-            Teammates: _this.Teammates.map(function (h) { return h.Name(); }),
+            Opponents: this.Opponents.map(function (h) { return h.Name(); }),
+            Teammates: this.Teammates.map(function (h) { return h.Name(); }),
         }
         return $.post({
             url: "../calculator/GetOverallScoresForAllHeroes",
             data: JSON.stringify(data),
             contentType: "application/json"
-        }).done(function (data) {
-            suggestions(data.sort(function (a, b) { return b.Value - a.Value; }));
+        }).done(data => {
+            this.suggestions(data.sort(function (a, b) { return b.Value - a.Value; }));
         });
     }
-
-    this.Opponents.concat(this.Teammates).forEach(function (slot) {
-        slot.Hero.subscribe(_this.UpdateScores);
-    });
 };
 
 $(document).ready(function () {
