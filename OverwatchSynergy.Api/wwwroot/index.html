@@ -10,27 +10,19 @@
     <body>
         <div class="teams">
             <div class="opponents" data-bind="foreach: Opponents">
-                <div class="hero">
-                    <span class="name" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
-                </div>
+                <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
             </div>
             <div class="available-heroes" data-bind="foreach: AvailableHeroesByRole">
                 <div data-bind="css: Role, foreach: AvailableHeroes">
-                    <div class="hero">
-                        <span class="name" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></span>
-                    </div>
+                    <div class="hero" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></div>
                 </div>
             </div>
             <div class="teammates" data-bind="foreach: Teammates">
-                <div class="hero">
-                    <span class="name" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
-                </div>
+                <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
             </div>
         </div>
         <div class="suggested-heroes" data-bind="foreach: Suggestions">
-            <div class="hero">
-                <span class="name" data-bind="click: Add, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></span>
-            </div>
+            <div class="hero" data-bind="click: Add, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
         </div>
     </body>
 </html>
