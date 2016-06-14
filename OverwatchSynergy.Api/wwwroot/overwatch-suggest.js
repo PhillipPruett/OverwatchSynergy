@@ -1,126 +1,151 @@
-var TeamMemberViewModel = function (hero, calculatorViewModel, team) {
+var TeamSlot = function (calculatorViewModel) {
     var _this = this;
 
-    this.Name = hero ? hero.Name : "Add Hero";
+    this.Hero = ko.observable(null);
+    this.IsSelected = ko.observable(false);
 
-    this.IsEmpty = !hero;
+    this.Name = ko.computed(function () {
+        var hero = ko.unwrap(_this.Hero);
+        return hero && hero.Name;
+    });
+    
+    this.BackgroundImage = ko.pureComputed(function () {
+        var hero = ko.unwrap(_this.Hero);
 
-    this.GetBackgroundImage = function () {
-        if (!this.IsEmpty) {
+        if (hero) {
             return "url('img/" + hero.Id + ".png')";
         }
         return "none"
-    }
+    });
 
-    this.GetClass = function () {
-        if (this.IsAdding) {
+    this.Class = ko.pureComputed(function () {
+        if (_this.IsSelected()) {
             return "adding";
         }
-        if (this.IsEmpty) {
+        if (!_this.Hero()) {
             return "empty";
         }
-    }
+    });
 
-    this.Click = function () {
-        if (this.IsEmpty) {
-            calculatorViewModel.SelectedTeam(team);
-        }
-        if (team && typeof(team.remove) === 'function') {
-            team.remove(this);
-        }
+    this.Select = function () {
+        this.Hero(null);
+        calculatorViewModel.SelectedSlot(this);
     }
 
 }
 
-var AvailableHeroViewModel = function (hero, calculatorViewModel) {
+var AvailableHero = function (hero, calculatorViewModel) {
     var _this = this;
 
     this.Name = hero.Name;
+    this.Role = hero.Role;
 
-    this.GetBackgroundImage = function () {
-        return "url('img/" + hero.Id + ".png')";
-    }
-
+    this.BackgroundImage = "url('img/" + hero.Id + ".png')";
+    
     this.Add = function () {
-        var selectedTeam = calculatorViewModel.SelectedTeam()
-        if (selectedTeam && selectedTeam().length < 6) {
-            calculatorViewModel.SelectedTeam().push(new TeamMemberViewModel(hero, calculatorViewModel, calculatorViewModel.SelectedTeam()));
+        var selectedSlot = calculatorViewModel.SelectedSlot();
+        if (selectedSlot) {
+            calculatorViewModel.SelectedSlot().Hero(hero);
+            calculatorViewModel.SelectNextAvailableSlot();
         }
     }
 }
 
-var SuggestedHeroViewModel = function (hero, weight) {
+var SuggestedHero = function (calculatorViewModel, hero, weight) {
     this.Name = hero ? hero.Name : "";
     this.Weight = weight;
 
-    this.IsEmpty = !hero;
+    this.BackgroundImage = hero ? "url('img/" + hero.Id + ".png')" : "none";
 
-    this.GetBackgroundImage = function () {
-        if (!this.IsEmpty) {
-            return "url('img/" + hero.Id + ".png')";
-        }
-        return "none"
-    }
+    this.Class = !hero ? "empty" : "";
 
-    this.GetClass = function () {
-        if (this.IsEmpty) {
-            return "empty";
-        }
+    this.Add = function () {
+        calculatorViewModel.SelectNextAvailableTeammateSlot();
+        calculatorViewModel.SelectedSlot().Hero(hero);
+        calculatorViewModel.SelectNextAvailableSlot();
     }
 }
 
 var CalculatorViewModel = function (heroesJson) {
     var _this = this,
-        opponents = ko.observableArray(),
-        teammates = ko.observableArray(),
         suggestions = ko.observable([]);
 
-    var addEmpties = function (currentTeam) {
-        var team = currentTeam.slice(0);
-        for (var i = team.length; i < 6; i++) {
-            var teamMemberViewModel = new TeamMemberViewModel(
-                null,
-                _this,
-                currentTeam);
+    this.Opponents = Array(6).fill(0).map(function () { return new TeamSlot(_this); });
+    this.Teammates = Array(6).fill(0).map(function () { return new TeamSlot(_this); });
+        
+    this.SelectedSlot = ko.observable();
 
-            if (i == currentTeam().length && _this.SelectedTeam() == currentTeam) {
-                teamMemberViewModel.IsAdding = true;
-            }
+    this.SelectedSlot.subscribe(function (currentSelection) {
+        currentSelection && currentSelection.IsSelected(false);
+    }, null, "beforeChange");
+    this.SelectedSlot.subscribe(function (newSelection) {
+        newSelection && newSelection.IsSelected(true);
+    });
 
-            team.push(teamMemberViewModel);
+    this.SelectedSlot(this.Opponents[0]);
+
+    this.SelectNextAvailableSlot = function () {
+        var currentSelection = this.SelectedSlot();
+        var isOpponentSelected = this.Opponents.some(function (t) {
+            return t === currentSelection
+        });
+        if (isOpponentSelected) {
+            var nextAvailableSlot = this.Opponents.find(function (t) {
+                return t.Hero() == null;
+            });
+            this.SelectedSlot(nextAvailableSlot);
         }
-        return team;
+
+        var isTeammateSelected = this.Teammates.some(function (t) {
+            return t === currentSelection
+        });
+        if (isTeammateSelected) {
+            var nextAvailableSlot = this.Teammates.find(function (t) {
+                return t.Hero() == null;
+            });
+            this.SelectedSlot(nextAvailableSlot);
+        }
     }
 
-    this.SelectedTeam = ko.observable(opponents);
+    this.SelectNextAvailableTeammateSlot = function () {
+        var nextAvailableSlot = this.Teammates.find(function (t) {
+            return t.Hero() == null;
+        });
+        this.SelectedSlot(nextAvailableSlot);
+    }
 
     this.AvailableHeroes = heroesJson.map(function (hero) {
-        return new AvailableHeroViewModel(hero, _this);
+        return new AvailableHero(hero, _this);
     });
 
-    this.OpponentsView = ko.pureComputed(function() {
-        return addEmpties(opponents);
-    });
+    var roles = ["Attack", "Defense", "Tank", "Support"];
 
-    this.TeammatesView = ko.pureComputed(function () {
-        return addEmpties(teammates);
-    });
-
-    this.SuggestionsView = ko.pureComputed(function () {
-        if (opponents().length == 0 && teammates().length == 0) {
-            return Array(3).fill(new SuggestedHeroViewModel())
+    this.AvailableHeroesByRole = roles.map(function (role) {
+        return {
+            Role: role,
+            AvailableHeroes: _this.AvailableHeroes.filter(function(hero){
+                return hero.Role == role;
+            })
         }
+    });
+
+    this.Suggestions = ko.pureComputed(function () {
+        var noHeroesAreSelected = !_this.Opponents.concat(_this.Teammates).some(function (s) { return s.Hero() });
+        if (noHeroesAreSelected) {
+            return Array(3).fill(new SuggestedHero(_this))
+        }
+
         return suggestions()
             .slice(0, 3)
             .map(function (weight) {
-                return new SuggestedHeroViewModel(weight.Hero, weight.Value)
+                return new SuggestedHero(_this, weight.Hero, weight.Value)
             });
     });
 
-    function getUpdatedScores() {
+    this.UpdateScores = function() {
         var data = {
-            Opponents: opponents().map(function (h) { return h.Name; }),
-            Teammates: teammates().map(function (h) { return h.Name; }),
+            Opponents: _this.Opponents.map(function (h) { return h.Name(); }),
+            Teammates: _this.Teammates.map(function (h) { return h.Name(); }),
         }
         return $.post({
             url: "../calculator/GetOverallScoresForAllHeroes",
@@ -131,8 +156,9 @@ var CalculatorViewModel = function (heroesJson) {
         });
     }
 
-    opponents.subscribe(getUpdatedScores);
-    teammates.subscribe(getUpdatedScores);
+    this.Opponents.concat(this.Teammates).forEach(function (slot) {
+        slot.Hero.subscribe(_this.UpdateScores);
+    });
 };
 
 $(document).ready(function () {
