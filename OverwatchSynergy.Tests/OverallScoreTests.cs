@@ -15,7 +15,9 @@ namespace OverwatchSynergy.Tests
         {
             var overallscores = Calculator.GetOverallScoresForAllHeroes(new[] {new Reaper()}, new[] {new Torbjorn()}, new NeutralCapture());
 
-            overallscores.Single(s => s.Hero is Winston).Value.Should().Be(50);
+            var  winstonValue = overallscores.Single(s => s.Hero is Winston).Value;
+
+            Assert.AreEqual(52.5, winstonValue, 0.001);
         }
 
         [Test]
@@ -26,12 +28,12 @@ namespace OverwatchSynergy.Tests
             Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[0], new NeutralCapture())
                       .Take(6).Select(w => w.Hero.Id).Should().BeEquivalentTo(new[]
                                                                       {
-                                                                          new Hanzo().Id,
+                                                                          new Winston().Id,
+                                                                          new Bastion().Id,
                                                                           new Junkrat().Id,
-                                                                          new Widowmaker().Id,
-                                                                          new Reinhardt().Id,
-                                                                          new Zarya().Id,
-                                                                          new Mercy().Id
+                                                                          new Reaper().Id,
+                                                                          new Lucio().Id,
+                                                                          new Symmetra().Id
                                                                       });
         }
 
@@ -51,7 +53,7 @@ namespace OverwatchSynergy.Tests
             Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Winston(), new Bastion(), new Junkrat(), new Reaper(), }, new NeutralCapture())
                       .First().Hero.Id.Should().Be(new Lucio().Id);
             Calculator.GetOverallScoresForAllHeroes(tobjornTeam, new Hero[] {new Winston(), new Bastion(), new Junkrat(), new Reaper(), new Lucio()}, new NeutralCapture())
-                      .First().Hero.Id.Should().Be(new Lucio().Id);
+                      .First().Hero.Id.Should().Be(new Symmetra().Id);
         }
     }
 }
