@@ -65,31 +65,17 @@ namespace OverwatchSynergy.Api
             };
         }
 
-        public static IEnumerable<Weight> GetOverallScoresForAllHeroes(IEnumerable<Hero> enemyTeam, IEnumerable<Hero> team, double relativeSynergyWeight = 1)
+        public static IEnumerable<Weight> GetOverallScoresForAllHeroes(IEnumerable<Hero> enemyTeam, IEnumerable<Hero> team, ObjectiveType objectiveType)
         {
-            return Heroes.Select(h => GetOverallScore(h, enemyTeam, team, relativeSynergyWeight)).SuppressDuplicates(team).OrderByDescending(w => w.Value);
+            return Heroes.Select(h => h.CalculateWeight( enemyTeam, team, objectiveType)).SuppressDuplicates(team).OrderByDescending(w => w.Value);;
         }
 
-        private static Weight GetOverallScore(Hero hero, IEnumerable<Hero> enemyTeam, IEnumerable<Hero> team, double relativeSynergyWeight = 1)
-        {
-            var counterValue = enemyTeam.Any()
-                               ? (int)enemyTeam.Average(enemy => hero.GetStrengthAgainstValue(enemy)) 
-                               : 50;
-            var synergyValue = team.Any()
-                               ? (int)team.Average(teammate => hero.GetSynergyValue(teammate))
-                               : 0;
-            return new Weight()
-            {
-                Hero = hero,
-                Value = (int)(counterValue + synergyValue * relativeSynergyWeight) / 2
-            };
-        }
     }
 
     public class Weight
     {
         public Hero Hero { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
     }
 }

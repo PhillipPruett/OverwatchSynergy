@@ -8,6 +8,9 @@ namespace OverwatchSynergy.Api.Heroes
         public override string Id => "dva";
         public override string Name => "D.Va";
         public override string Role => "Tank";
+        protected override double CountersMultiplier => 1.2;
+        protected override double SynergyMultiplier => 2.0;
+        protected override double ObjectiveMultiplier => 0.5;
 
         public override int GetSynergyValue(Hero hero)
         {
@@ -45,6 +48,11 @@ namespace OverwatchSynergy.Api.Heroes
                 return 0;
             }
             return 50;
+        }
+
+        public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
+        {
+            return 1.0;
         }
     }
 }

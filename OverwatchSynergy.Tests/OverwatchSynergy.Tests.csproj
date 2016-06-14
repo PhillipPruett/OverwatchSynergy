@@ -87,6 +87,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ObjectiveWeightTests.cs" />
     <Compile Include="RouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StrengthTests.cs" />
