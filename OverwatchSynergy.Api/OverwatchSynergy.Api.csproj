@@ -144,7 +144,7 @@
     </Content>
     <Content Include="wwwroot\lib\jquery.js" />
     <Content Include="wwwroot\lib\knockout-latest.js" />
-    <Content Include="wwwroot\overwatch-suggest.css" />
+    <Content Include="wwwroot\overwatch-aegis.css" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
