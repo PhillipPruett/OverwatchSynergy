@@ -93,8 +93,6 @@ class CalculatorViewModel {
             newSelection && newSelection.IsSelected(true);
         });
 
-        this.SelectedSlot(this.Opponents[0]);
-
         var AvailableHeroes = heroesJson.map(hero => {
             return new AvailableHero(hero, this);
         });
@@ -114,12 +112,14 @@ class CalculatorViewModel {
             this.Opponents.push(new TeamSlot(this));
             this.Teammates.push(new TeamSlot(this));
         }
+
+        this.SelectedSlot(this.Opponents[0]);
     };
     
     private suggestions = ko.observable<WeightedHero[]>([]);
 
-    Opponents: TeamSlot[];
-    Teammates: TeamSlot[];
+    Opponents = new Array<TeamSlot>();
+    Teammates = new Array<TeamSlot>();
 
     SelectedSlot = ko.observable<TeamSlot>();
 

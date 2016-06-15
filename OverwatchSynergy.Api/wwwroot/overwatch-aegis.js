@@ -64,6 +64,8 @@ class CalculatorViewModel {
     constructor(heroesJson) {
         this.heroesJson = heroesJson;
         this.suggestions = ko.observable([]);
+        this.Opponents = new Array();
+        this.Teammates = new Array();
         this.SelectedSlot = ko.observable();
         this.SelectNextAvailableSlot = () => {
             var currentSelection = this.SelectedSlot();
@@ -122,7 +124,6 @@ class CalculatorViewModel {
         this.SelectedSlot.subscribe(function (newSelection) {
             newSelection && newSelection.IsSelected(true);
         });
-        this.SelectedSlot(this.Opponents[0]);
         var AvailableHeroes = heroesJson.map(hero => {
             return new AvailableHero(hero, this);
         });
@@ -139,6 +140,7 @@ class CalculatorViewModel {
             this.Opponents.push(new TeamSlot(this));
             this.Teammates.push(new TeamSlot(this));
         }
+        this.SelectedSlot(this.Opponents[0]);
     }
     ;
 }
