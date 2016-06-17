@@ -101,7 +101,7 @@ class CalculatorViewModel {
             }
             return this.suggestions()
                 .slice(0, 3)
-                .map(function (weight) {
+                .map(weight => {
                 return new SuggestedHero(this, weight.Hero, weight.Value);
             });
         });
