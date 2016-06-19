@@ -7,7 +7,7 @@
             newSelection && newSelection.IsSelected(true);
         });
 
-        for (var i = 0; i < 6; i++) {
+        for (let i = 0; i < 6; i++) {
             this.Opponents.push(new TeamSlot(this));
             this.Teammates.push(new TeamSlot(this));
         }
@@ -15,7 +15,7 @@
         this.SelectedSlot(this.Opponents[0]);
 
         $.getJSON("../heroes/").done(heroesJson => {
-            var AvailableHeroes = heroesJson.map(hero => {
+            let AvailableHeroes = heroesJson.map(hero => {
                 return new AvailableHero(hero, this);
             });
 
@@ -42,22 +42,22 @@
     AvailableHeroesByRole = ko.observable<RoleGrouping[]>([]);
 
     SelectNextAvailableSlot = () => {
-        var currentSelection = this.SelectedSlot();
-        var isOpponentSelected = this.Opponents.some(t => {
+        let currentSelection = this.SelectedSlot();
+        let isOpponentSelected = this.Opponents.some(t => {
             return t === currentSelection
         });
         if (isOpponentSelected) {
-            var nextAvailableSlot = this.Opponents.find(t => {
+            let nextAvailableSlot = this.Opponents.find(t => {
                 return t.Hero() == null;
             });
             this.SelectedSlot(nextAvailableSlot);
         }
 
-        var isTeammateSelected = this.Teammates.some(t => {
+        let isTeammateSelected = this.Teammates.some(t => {
             return t === currentSelection
         });
         if (isTeammateSelected) {
-            var nextAvailableSlot = this.Teammates.find(t => {
+            let nextAvailableSlot = this.Teammates.find(t => {
                 return t.Hero() == null;
             });
             this.SelectedSlot(nextAvailableSlot);
@@ -65,14 +65,14 @@
     }
 
     SelectNextAvailableTeammateSlot = () => {
-        var nextAvailableSlot = this.Teammates.find(t => {
+        let nextAvailableSlot = this.Teammates.find(t => {
             return t.Hero() == null;
         });
         this.SelectedSlot(nextAvailableSlot);
     }
 
     Suggestions = ko.pureComputed(() => {
-        var noHeroesAreSelected = !this.Opponents.concat(this.Teammates).some(s => s.Hero() != null);
+        let noHeroesAreSelected = !this.Opponents.concat(this.Teammates).some(s => s.Hero() != null);
         if (noHeroesAreSelected) {
             return new Array(3).fill(new SuggestedHero(this))
         }
@@ -85,7 +85,7 @@
     });
 
     UpdateScores = () => {
-        var data = {
+        let data = {
             Opponents: this.Opponents.map(function (h) { return h.Name(); }),
             Teammates: this.Teammates.map(function (h) { return h.Name(); }),
         }

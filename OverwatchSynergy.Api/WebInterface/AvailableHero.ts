@@ -8,7 +8,7 @@
     BackgroundImage = "url('img/" + this.hero.Id + ".png')";
 
     Add = () => {
-        var selectedSlot = this.calculatorViewModel.SelectedSlot();
+        let selectedSlot = this.calculatorViewModel.SelectedSlot();
         if (selectedSlot) {
             this.calculatorViewModel.SelectedSlot().Hero(this.hero);
             this.calculatorViewModel.SelectNextAvailableSlot();

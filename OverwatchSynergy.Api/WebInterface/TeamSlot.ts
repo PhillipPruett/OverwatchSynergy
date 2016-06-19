@@ -7,12 +7,12 @@
     IsSelected = ko.observable(false);
 
     Name = ko.computed(() => {
-        var hero = ko.unwrap(this.Hero);
+        let hero = ko.unwrap(this.Hero);
         return hero && hero.Name;
     });
 
     BackgroundImage = ko.pureComputed(() => {
-        var hero = ko.unwrap(this.Hero);
+        let hero = ko.unwrap(this.Hero);
 
         if (hero) {
             return "url('img/" + hero.Id + ".png')";
