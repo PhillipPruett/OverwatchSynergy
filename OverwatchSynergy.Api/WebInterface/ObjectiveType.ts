@@ -1,0 +1,3 @@
+﻿class ObjectiveType {
+    Id: string;
+}

@@ -201,6 +201,7 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\tests\jasmine.extensions.d.ts" />
+    <TypeScriptCompile Include="WebInterface\ObjectiveType.ts" />
     <TypeScriptCompile Include="WebInterface\SuggestedHero.ts" />
     <TypeScriptCompile Include="WebInterface\TeamSlot.ts" />
   </ItemGroup>

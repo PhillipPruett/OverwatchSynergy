@@ -30,16 +30,22 @@
                 }
             }));
         });
+
+        $.getJSON("../objectives/").done(objectivesJson => {
+            this.ObjectiveTypes(objectivesJson);
+        });
     };
 
     private suggestions = ko.observable<WeightedHero[]>([]);
 
     Opponents = new Array<TeamSlot>();
     Teammates = new Array<TeamSlot>();
+    ObjectiveType = ko.observable<ObjectiveType>();
 
     SelectedSlot = ko.observable<TeamSlot>();
 
     AvailableHeroesByRole = ko.observable<RoleGrouping[]>([]);
+    ObjectiveTypes = ko.observable<ObjectiveType[]>([]);
 
     SelectNextAvailableSlot = () => {
         let currentSelection = this.SelectedSlot();
