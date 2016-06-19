@@ -1,25 +1,10 @@
 ﻿class AegisCalculator {
-    constructor(private heroesJson: Hero[]) {
+    constructor() {
         this.SelectedSlot.subscribe(function (currentSelection) {
             currentSelection && currentSelection.IsSelected(false);
         }, null, "beforeChange");
         this.SelectedSlot.subscribe(function (newSelection) {
             newSelection && newSelection.IsSelected(true);
-        });
-
-        var AvailableHeroes = heroesJson.map(hero => {
-            return new AvailableHero(hero, this);
-        });
-
-        let roles = ["Attack", "Defense", "Tank", "Support"];
-
-        this.AvailableHeroesByRole = roles.map(role => {
-            return {
-                Role: role,
-                AvailableHeroes: AvailableHeroes.filter(hero => {
-                    return hero.Role == role;
-                })
-            }
         });
 
         for (var i = 0; i < 6; i++) {
@@ -28,6 +13,23 @@
         }
 
         this.SelectedSlot(this.Opponents[0]);
+
+        $.getJSON("../heroes/").done(heroesJson => {
+            var AvailableHeroes = heroesJson.map(hero => {
+                return new AvailableHero(hero, this);
+            });
+
+            let roles = ["Attack", "Defense", "Tank", "Support"];
+
+            this.AvailableHeroesByRole(roles.map(role => {
+                return {
+                    Role: role,
+                    AvailableHeroes: AvailableHeroes.filter(hero => {
+                        return hero.Role == role;
+                    })
+                }
+            }));
+        });
     };
 
     private suggestions = ko.observable<WeightedHero[]>([]);
@@ -37,7 +39,7 @@
 
     SelectedSlot = ko.observable<TeamSlot>();
 
-    AvailableHeroesByRole: RoleGrouping[];
+    AvailableHeroesByRole = ko.observable<RoleGrouping[]>([]);
 
     SelectNextAvailableSlot = () => {
         var currentSelection = this.SelectedSlot();
