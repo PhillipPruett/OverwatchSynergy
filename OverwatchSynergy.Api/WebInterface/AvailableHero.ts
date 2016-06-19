@@ -1,5 +1,5 @@
 ﻿class AvailableHero {
-    constructor(private hero: Hero, private calculatorViewModel: CalculatorViewModel) {
+    constructor(private hero: Hero, private calculatorViewModel: AegisCalculator) {
     }
 
     Name = this.hero.Name;

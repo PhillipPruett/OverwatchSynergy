@@ -1,5 +1,5 @@
 ﻿class SuggestedHero {
-    constructor(private calculatorViewModel: CalculatorViewModel, private hero?: Hero, public Weight?: number) { }
+    constructor(private calculatorViewModel: AegisCalculator, private hero?: Hero, public Weight?: number) { }
     Name = this.hero ? this.hero.Name : "";
 
     BackgroundImage = this.hero ? "url('img/" + this.hero.Id + ".png')" : "none";

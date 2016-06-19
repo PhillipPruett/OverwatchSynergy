@@ -1,4 +1,4 @@
-﻿class CalculatorViewModel {
+﻿class AegisCalculator {
     constructor(private heroesJson: Hero[]) {
         this.SelectedSlot.subscribe(function (currentSelection) {
             currentSelection && currentSelection.IsSelected(false);

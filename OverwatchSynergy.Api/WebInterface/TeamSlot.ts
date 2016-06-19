@@ -1,5 +1,5 @@
 ﻿class TeamSlot {
-    constructor(private calculatorViewModel: CalculatorViewModel) {
+    constructor(private calculatorViewModel: AegisCalculator) {
         this.Hero.subscribe(calculatorViewModel.UpdateScores);
     }
 
