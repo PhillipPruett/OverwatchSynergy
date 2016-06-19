@@ -160,6 +160,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="CalculatorController.cs" />
+    <Compile Include="ObjectivesController.cs" />
     <Compile Include="Heroes\Bastion.cs" />
     <Compile Include="Heroes\DVa.cs" />
     <Compile Include="Heroes\Genji.cs" />
@@ -194,7 +195,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="WebInterface\AvailableHero.ts" />
-    <TypeScriptCompile Include="WebInterface\CalculatorViewModel.ts" />
+    <TypeScriptCompile Include="WebInterface\AegisCalculator.ts" />
     <TypeScriptCompile Include="WebInterface\Interfaces.ts" />
     <TypeScriptCompile Include="WebInterface\LaunchUI.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />

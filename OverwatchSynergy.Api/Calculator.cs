@@ -3,12 +3,13 @@ using System.Globalization;
 using System.Linq;
 using OverwatchSynergy.Api;
 using OverwatchSynergy.Api.Heroes;
+using OverwatchSynergy.Api.ObjectiveTypes;
 
 namespace OverwatchSynergy.Api
 {
     public static class Calculator
     {
-        public static Hero[] Heroes = new[]
+        public static Hero[] Heroes = new Hero[]
                                        {
                                            new Genji(),
                                            new McCree(),
@@ -30,8 +31,17 @@ namespace OverwatchSynergy.Api
                                            new Lucio(),
                                            new Mercy(),
                                            new Symmetra(),
-                                           (Hero) new Zenyatta(),
+                                           new Zenyatta(),
                                        };
+
+        public static ObjectiveType[] ObjectiveTypes = new ObjectiveType[]
+        {
+            new AttackCapture(),
+            new AttackPushCart(),
+            new DefenseCapture(),
+            new DefensePushCart(),
+            new NeutralCapture(),
+        };
 
         public static IEnumerable<Weight> GetSynergies(IEnumerable<Hero> team)
         {
