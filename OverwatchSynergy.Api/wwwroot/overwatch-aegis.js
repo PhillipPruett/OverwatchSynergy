@@ -1,34 +1,3 @@
-class TeamSlot {
-    constructor(calculatorViewModel) {
-        this.calculatorViewModel = calculatorViewModel;
-        this.Hero = ko.observable(null);
-        this.IsSelected = ko.observable(false);
-        this.Name = ko.computed(() => {
-            var hero = ko.unwrap(this.Hero);
-            return hero && hero.Name;
-        });
-        this.BackgroundImage = ko.pureComputed(() => {
-            var hero = ko.unwrap(this.Hero);
-            if (hero) {
-                return "url('img/" + hero.Id + ".png')";
-            }
-            return "none";
-        });
-        this.Class = ko.pureComputed(() => {
-            if (this.IsSelected()) {
-                return "adding";
-            }
-            if (!this.Hero()) {
-                return "empty";
-            }
-        });
-        this.Select = () => {
-            this.Hero(null);
-            this.calculatorViewModel.SelectedSlot(this);
-        };
-        this.Hero.subscribe(calculatorViewModel.UpdateScores);
-    }
-}
 class AvailableHero {
     constructor(hero, calculatorViewModel) {
         this.hero = hero;
@@ -42,21 +11,6 @@ class AvailableHero {
                 this.calculatorViewModel.SelectedSlot().Hero(this.hero);
                 this.calculatorViewModel.SelectNextAvailableSlot();
             }
-        };
-    }
-}
-class SuggestedHero {
-    constructor(calculatorViewModel, hero, Weight) {
-        this.calculatorViewModel = calculatorViewModel;
-        this.hero = hero;
-        this.Weight = Weight;
-        this.Name = this.hero ? this.hero.Name : "";
-        this.BackgroundImage = this.hero ? "url('img/" + this.hero.Id + ".png')" : "none";
-        this.Class = !this.hero ? "empty" : "";
-        this.Add = () => {
-            this.calculatorViewModel.SelectNextAvailableTeammateSlot();
-            this.calculatorViewModel.SelectedSlot().Hero(this.hero);
-            this.calculatorViewModel.SelectNextAvailableSlot();
         };
     }
 }
@@ -151,4 +105,50 @@ $(document).ready(function () {
         ko.applyBindings(new CalculatorViewModel(data));
     });
 });
+class SuggestedHero {
+    constructor(calculatorViewModel, hero, Weight) {
+        this.calculatorViewModel = calculatorViewModel;
+        this.hero = hero;
+        this.Weight = Weight;
+        this.Name = this.hero ? this.hero.Name : "";
+        this.BackgroundImage = this.hero ? "url('img/" + this.hero.Id + ".png')" : "none";
+        this.Class = !this.hero ? "empty" : "";
+        this.Add = () => {
+            this.calculatorViewModel.SelectNextAvailableTeammateSlot();
+            this.calculatorViewModel.SelectedSlot().Hero(this.hero);
+            this.calculatorViewModel.SelectNextAvailableSlot();
+        };
+    }
+}
+class TeamSlot {
+    constructor(calculatorViewModel) {
+        this.calculatorViewModel = calculatorViewModel;
+        this.Hero = ko.observable(null);
+        this.IsSelected = ko.observable(false);
+        this.Name = ko.computed(() => {
+            var hero = ko.unwrap(this.Hero);
+            return hero && hero.Name;
+        });
+        this.BackgroundImage = ko.pureComputed(() => {
+            var hero = ko.unwrap(this.Hero);
+            if (hero) {
+                return "url('img/" + hero.Id + ".png')";
+            }
+            return "none";
+        });
+        this.Class = ko.pureComputed(() => {
+            if (this.IsSelected()) {
+                return "adding";
+            }
+            if (!this.Hero()) {
+                return "empty";
+            }
+        });
+        this.Select = () => {
+            this.Hero(null);
+            this.calculatorViewModel.SelectedSlot(this);
+        };
+        this.Hero.subscribe(calculatorViewModel.UpdateScores);
+    }
+}
 //# sourceMappingURL=overwatch-aegis.js.map

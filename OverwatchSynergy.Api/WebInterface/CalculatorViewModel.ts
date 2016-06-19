@@ -1,90 +1,4 @@
-﻿interface Hero {
-    Name: string;
-    Id: string;
-    Role: string;
-}
-
-interface RoleGrouping {
-    Role: string;
-    AvailableHeroes: AvailableHero[];
-}
-
-interface WeightedHero {
-    Value: number;
-    Hero: Hero;
-}
-
-class TeamSlot {
-    constructor(private calculatorViewModel: CalculatorViewModel) {
-        this.Hero.subscribe(calculatorViewModel.UpdateScores);
-    }
-
-    Hero = ko.observable<Hero>(null);
-    IsSelected = ko.observable(false);
-
-    Name = ko.computed(() => {
-        var hero = ko.unwrap(this.Hero);
-        return hero && hero.Name;
-    });
-    
-    BackgroundImage = ko.pureComputed(() => {
-        var hero = ko.unwrap(this.Hero);
-
-        if (hero) {
-            return "url('img/" + hero.Id + ".png')";
-        }
-        return "none"
-    });
-
-    Class = ko.pureComputed(() => {
-        if (this.IsSelected()) {
-            return "adding";
-        }
-        if (!this.Hero()) {
-            return "empty";
-        }
-    });
-
-    Select = () => {
-        this.Hero(null);
-        this.calculatorViewModel.SelectedSlot(this);
-    }
-}
-
-class AvailableHero {
-    constructor(private hero: Hero, private calculatorViewModel: CalculatorViewModel) {
-    }
-    
-    Name = this.hero.Name;
-    Role = this.hero.Role;
-
-    BackgroundImage = "url('img/" + this.hero.Id + ".png')";
-    
-    Add = () => {
-        var selectedSlot = this.calculatorViewModel.SelectedSlot();
-        if (selectedSlot) {
-            this.calculatorViewModel.SelectedSlot().Hero(this.hero);
-            this.calculatorViewModel.SelectNextAvailableSlot();
-        }
-    }
-}
-
-class SuggestedHero {
-    constructor(private calculatorViewModel: CalculatorViewModel, private hero?: Hero, public Weight?: number) { }
-    Name = this.hero ? this.hero.Name : "";
-
-    BackgroundImage = this.hero ? "url('img/" + this.hero.Id + ".png')" : "none";
-
-    Class = !this.hero ? "empty" : "";
-
-    Add = () => {
-        this.calculatorViewModel.SelectNextAvailableTeammateSlot();
-        this.calculatorViewModel.SelectedSlot().Hero(this.hero);
-        this.calculatorViewModel.SelectNextAvailableSlot();
-    }
-}
-
-class CalculatorViewModel {
+﻿class CalculatorViewModel {
     constructor(private heroesJson: Hero[]) {
         this.SelectedSlot.subscribe(function (currentSelection) {
             currentSelection && currentSelection.IsSelected(false);
@@ -115,7 +29,7 @@ class CalculatorViewModel {
 
         this.SelectedSlot(this.Opponents[0]);
     };
-    
+
     private suggestions = ko.observable<WeightedHero[]>([]);
 
     Opponents = new Array<TeamSlot>();
@@ -182,10 +96,3 @@ class CalculatorViewModel {
         });
     }
 };
-
-$(document).ready(function () {
-    $.getJSON("../heroes/")
-        .done(function (data) {
-            ko.applyBindings(new CalculatorViewModel(data));
-        });
-});

@@ -193,10 +193,15 @@
     <Compile Include="HeroesController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="OverwatchAegis.ts" />
+    <TypeScriptCompile Include="WebInterface\AvailableHero.ts" />
+    <TypeScriptCompile Include="WebInterface\CalculatorViewModel.ts" />
+    <TypeScriptCompile Include="WebInterface\Interfaces.ts" />
+    <TypeScriptCompile Include="WebInterface\LaunchUI.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\tests\jasmine.extensions.d.ts" />
+    <TypeScriptCompile Include="WebInterface\SuggestedHero.ts" />
+    <TypeScriptCompile Include="WebInterface\TeamSlot.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
