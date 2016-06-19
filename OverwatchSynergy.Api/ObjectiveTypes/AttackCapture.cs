@@ -7,5 +7,6 @@ namespace OverwatchSynergy.Api.ObjectiveTypes
 {
     public class AttackCapture : ObjectiveType
     {
+        public override string Id => "attackcapture";
     }
 }

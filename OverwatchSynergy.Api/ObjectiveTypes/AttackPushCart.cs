@@ -7,5 +7,6 @@ namespace OverwatchSynergy.Api.ObjectiveTypes
 {
     public class AttackPushCart : ObjectiveType
     {
+        public override string Id => "attackpushcart";
     }
 }
