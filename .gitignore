@@ -27,3 +27,5 @@ Artifacts
 *.xml
 *.nupkg
 /.vs/*
+
+overwatch-aegis.js*
