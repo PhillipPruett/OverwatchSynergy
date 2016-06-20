@@ -13,7 +13,7 @@
         }
 
         this.SelectedSlot(this.Opponents[0]);
-
+        
         $.getJSON("../heroes/").done(heroesJson => {
             let AvailableHeroes = heroesJson.map(hero => {
                 return new AvailableHero(hero, this);
@@ -31,8 +31,10 @@
             }));
         });
 
-        $.getJSON("../objectives/").done(objectivesJson => {
-            this.ObjectiveTypes(objectivesJson);
+        $.getJSON("../objectives/").done((objectivesJson: ObjectiveType []) => {
+            this.AvailableObjectiveTypes(objectivesJson);
+            this.SelectedObjectiveType(objectivesJson[0]);
+            this.SelectedObjectiveType.subscribe(this.UpdateScores);
         });
     };
 
@@ -40,12 +42,12 @@
 
     Opponents = new Array<TeamSlot>();
     Teammates = new Array<TeamSlot>();
-    ObjectiveType = ko.observable<ObjectiveType>();
+    SelectedObjectiveType = ko.observable<ObjectiveType>();
 
     SelectedSlot = ko.observable<TeamSlot>();
 
     AvailableHeroesByRole = ko.observable<RoleGrouping[]>([]);
-    ObjectiveTypes = ko.observable<ObjectiveType[]>([]);
+    AvailableObjectiveTypes = ko.observable<ObjectiveType[]>([]);
 
     SelectNextAvailableSlot = () => {
         let currentSelection = this.SelectedSlot();
@@ -77,6 +79,10 @@
         this.SelectedSlot(nextAvailableSlot);
     }
 
+    SelectObjectiveType = (objectiveType: ObjectiveType) => {
+        this.SelectedObjectiveType(objectiveType);
+    }
+
     Suggestions = ko.pureComputed(() => {
         let noHeroesAreSelected = !this.Opponents.concat(this.Teammates).some(s => s.Hero() != null);
         if (noHeroesAreSelected) {
@@ -92,8 +98,9 @@
 
     UpdateScores = () => {
         let data = {
-            Opponents: this.Opponents.map(function (h) { return h.Name(); }),
-            Teammates: this.Teammates.map(function (h) { return h.Name(); }),
+            Opponents: this.Opponents.filter(h => h.Hero() != null).map(h => h.Name()),
+            Teammates: this.Teammates.filter(h => h.Hero() != null).map(h => h.Name()),
+            ObjectiveGameType: this.SelectedObjectiveType().Id
         }
         return $.post({
             url: "../calculator/GetOverallScoresForAllHeroes",

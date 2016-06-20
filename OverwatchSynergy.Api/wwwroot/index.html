@@ -24,8 +24,8 @@
         <div class="suggested-heroes structural" data-bind="foreach: Suggestions">
             <div class="hero" data-bind="click: Add, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
         </div>
-        <div data-bind="foreach: ObjectiveTypes">
-            <div class="objective-type" data-bind="text: Id"></div>
+        <div data-bind="foreach: AvailableObjectiveTypes">
+            <div class="objective-type" data-bind="text: Id, click: $root.SelectObjectiveType"></div>
         </div>
     </body>
 </html>
