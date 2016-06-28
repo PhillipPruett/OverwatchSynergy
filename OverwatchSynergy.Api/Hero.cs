@@ -13,7 +13,7 @@ namespace OverwatchSynergy.Api
         protected abstract double SynergyMultiplier { get;} 
         protected abstract double ObjectiveMultiplier { get; }
 
-        public Weight CalculateWeight(IEnumerable<Hero> team, IEnumerable<Hero> enemyTeam , ObjectiveType objectiveType)
+        public Weight CalculateWeight(IEnumerable<Hero> enemyTeam, IEnumerable<Hero> team , ObjectiveType objectiveType)
         {
             var counterValue = enemyTeam.Any()
                                ? (int)enemyTeam.Average(this.GetStrengthAgainstValue)
