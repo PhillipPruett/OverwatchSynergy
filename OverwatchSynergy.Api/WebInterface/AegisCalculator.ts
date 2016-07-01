@@ -31,9 +31,10 @@
             }));
         });
 
-        $.getJSON("../objectives/").done((objectivesJson: ObjectiveType []) => {
-            this.AvailableObjectiveTypes(objectivesJson);
-            this.SelectedObjectiveType(objectivesJson[0]);
+        $.getJSON("../objectives/").done((objectivesJson: any[]) => {
+            let objectives = objectivesJson.map(obj => new ObjectiveType(obj.Id, this));
+            this.AvailableObjectiveTypes(objectives);
+            this.SelectedObjectiveType(objectives[0]);
             this.SelectedObjectiveType.subscribe(this.UpdateScores);
         });
     };
