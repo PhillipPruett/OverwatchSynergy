@@ -17,11 +17,13 @@
                     <div class="hero" data-bind="click: Add, attr: { title: Name }, style: { backgroundImage: BackgroundImage }"></div>
                 </div>
             </div>
-            <div class="teammates structural" data-bind="foreach: Teammates">
-                <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
-            </div>
-            <div class="objectives structural" data-bind="foreach: AvailableObjectiveTypes">
-                <div class="objective-type" data-bind="click: $root.SelectObjectiveType, attr: { title: Id }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
+            <div>
+                <div class="teammates structural" data-bind="foreach: Teammates">
+                    <div class="hero" data-bind="click: Select, attr: { title: Name }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
+                </div>
+                <div class="objectives structural" data-bind="foreach: AvailableObjectiveTypes">
+                    <div class="objective-type" data-bind="click: $root.SelectObjectiveType, attr: { title: Id }, css: Class, style: { backgroundImage: BackgroundImage }"></div>
+                </div>
             </div>
         </div>
         <div class="suggested-heroes structural" data-bind="foreach: Suggestions">

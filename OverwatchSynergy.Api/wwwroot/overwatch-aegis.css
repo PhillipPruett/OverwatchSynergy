@@ -147,6 +147,10 @@ body > div {
     content: "+";
 }
 
+.objective-type {
+    border-style: dashed;
+}
+
 .objective-type.selected {
     border: 1px solid #00a5e2;
 }
