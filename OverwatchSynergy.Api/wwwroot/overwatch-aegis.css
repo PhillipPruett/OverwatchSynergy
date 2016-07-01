@@ -153,6 +153,7 @@ body > div {
 
 .objective-type.selected {
     border: 1px solid #00a5e2;
+    background-color: #d2d2d2;
 }
 
 .suggested-heroes .empty::after {
