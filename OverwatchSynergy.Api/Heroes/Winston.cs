@@ -53,11 +53,11 @@ namespace OverwatchSynergy.Api.Heroes
 
         public override double GetObjectiveStrengthValue(ObjectiveType objectiveType)
         {
-            if (objectiveType is NeutralCapture)
+            if (objectiveType is Control)
             {
                 return 1.5;
             }
-            if (objectiveType is DefensePushCart)
+            if (objectiveType is EscortDefend)
             {
                 return 0.7;
             }

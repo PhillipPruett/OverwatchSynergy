@@ -36,11 +36,11 @@ namespace OverwatchSynergy.Api
 
         public static ObjectiveType[] ObjectiveTypes = new ObjectiveType[]
         {
-            new AttackCapture(),
-            new AttackPushCart(),
-            new DefenseCapture(),
-            new DefensePushCart(),
-            new NeutralCapture(),
+            new AssaultAttack(),
+            new EscortAttack(),
+            new AssaultDefend(),
+            new EscortDefend(),
+            new Control(),
         };
 
         public static IEnumerable<Weight> GetSynergies(IEnumerable<Hero> team)

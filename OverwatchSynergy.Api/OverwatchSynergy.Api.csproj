@@ -114,8 +114,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="wwwroot\img\assault_attack.png" />
+    <Content Include="wwwroot\img\assault_defend.png" />
     <Content Include="wwwroot\img\bastion.png" />
+    <Content Include="wwwroot\img\control.png" />
     <Content Include="wwwroot\img\dva.png" />
+    <Content Include="wwwroot\img\escort_attack.png" />
+    <Content Include="wwwroot\img\escort_defend.png" />
     <Content Include="wwwroot\img\genji.png" />
     <Content Include="wwwroot\img\hanzo.png" />
     <Content Include="wwwroot\img\IconDefense.png" />
@@ -184,11 +189,11 @@
     <Compile Include="Heroes\Zenyatta.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="ObjectiveType.cs" />
-    <Compile Include="ObjectiveTypes\AttackCapture.cs" />
-    <Compile Include="ObjectiveTypes\AttackPushCart.cs" />
-    <Compile Include="ObjectiveTypes\DefenseCapture.cs" />
-    <Compile Include="ObjectiveTypes\DefensePushCart.cs" />
-    <Compile Include="ObjectiveTypes\NeutralCapture.cs" />
+    <Compile Include="ObjectiveTypes\AssaultAttack.cs" />
+    <Compile Include="ObjectiveTypes\EscortAttack.cs" />
+    <Compile Include="ObjectiveTypes\AssaultDefend.cs" />
+    <Compile Include="ObjectiveTypes\EscortDefend.cs" />
+    <Compile Include="ObjectiveTypes\Control.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="HeroesController.cs" />
