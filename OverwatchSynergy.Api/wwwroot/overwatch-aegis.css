@@ -113,7 +113,7 @@ body > div {
     width: 112px;
 }
 
-.hero {
+.hero, .objective-type {
     margin: 4px;
     height: 50px;
     width: 56px;
@@ -145,6 +145,14 @@ body > div {
 
 .hero.empty::after {
     content: "+";
+}
+
+.objective-type {
+    border-style: dashed;
+}
+
+.objective-type.selected {
+    border: 1px solid #00a5e2;
 }
 
 .suggested-heroes .empty::after {

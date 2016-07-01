@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="objectivetypes.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="189.85328"
+     inkscape:cy="1014.478"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="987"
+     inkscape:window-x="1672"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid4246" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4136"
+       width="55.404015"
+       height="49.404011"
+       x="28.01185"
+       y="18.874483"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:#00a5e2;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:0.94117647"
+       d="m 40.118845,26.32984 31.190026,0 c 0,29.892751 -15.595013,34.470373 -15.595013,34.470373 0,0 -15.595013,-4.98404 -15.595013,-34.470373 z"
+       id="path4138"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <rect
+       y="18.874483"
+       x="106.55121"
+       height="49.404011"
+       width="55.404015"
+       id="rect4148"
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#00a5e2;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4152"
+       sodipodi:type="arc"
+       sodipodi:cx="134.24533"
+       sodipodi:cy="43.588684"
+       sodipodi:rx="14.365815"
+       sodipodi:ry="14.366095"
+       sodipodi:start="0.26179939"
+       sodipodi:end="1.3089969"
+       sodipodi:open="true"
+       d="M 148.12164,47.306903 A 14.365815,14.366095 0 0 1 137.96348,57.465266"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       d="m 137.96348,29.712102 a 14.365815,14.366095 0 0 1 10.15816,10.158363"
+       sodipodi:open="true"
+       sodipodi:end="6.0213859"
+       sodipodi:start="4.9741884"
+       sodipodi:ry="14.366095"
+       sodipodi:rx="14.365815"
+       sodipodi:cy="43.588684"
+       sodipodi:cx="134.24533"
+       sodipodi:type="arc"
+       id="path4154"
+       style="fill:none;fill-opacity:1;stroke:#00a5e2;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#00a5e2;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4156"
+       sodipodi:type="arc"
+       sodipodi:cx="134.24533"
+       sodipodi:cy="43.588684"
+       sodipodi:rx="14.365815"
+       sodipodi:ry="14.366095"
+       sodipodi:start="3.403392"
+       sodipodi:end="4.4505896"
+       sodipodi:open="true"
+       d="M 120.36902,39.870466 A 14.365815,14.366095 0 0 1 130.52718,29.712102"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       d="M 130.52718,57.465266 A 14.365815,14.366095 0 0 1 120.36902,47.306902"
+       sodipodi:open="true"
+       sodipodi:end="2.8797933"
+       sodipodi:start="1.8325957"
+       sodipodi:ry="14.366095"
+       sodipodi:rx="14.365815"
+       sodipodi:cy="43.588684"
+       sodipodi:cx="134.24533"
+       sodipodi:type="arc"
+       id="path4158"
+       style="fill:none;fill-opacity:1;stroke:#00a5e2;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 134.24533,27.080714 0,10.930726"
+       id="path4160"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4162"
+       d="m 134.24533,49.280497 0,10.930724"
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 150.71185,43.588685 -10.93052,0"
+       id="path4164"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4166"
+       d="m 128.63516,43.588685 -10.93052,0"
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\assault_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <rect
+       y="79.053055"
+       x="28.01185"
+       height="49.404011"
+       width="55.404015"
+       id="rect4180"
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <rect
+       y="18.874483"
+       x="177.29756"
+       height="49.404011"
+       width="55.404015"
+       id="rect4182"
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       sodipodi:nodetypes="cccc"
+       inkscape:connector-curvature="0"
+       id="path4184"
+       d="m 189.40456,26.32984 31.19003,0 c 0,29.892751 -15.59502,34.470373 -15.59502,34.470373 0,0 -15.59501,-4.98404 -15.59501,-34.470373 z"
+       style="fill:#00a5e2;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       d="m 213.49958,43.271357 a 9.0403385,9.0411043 0 0 1 -6.39248,6.393026"
+       sodipodi:open="true"
+       sodipodi:end="1.3089969"
+       sodipodi:start="0.26179939"
+       sodipodi:ry="9.0411043"
+       sodipodi:rx="9.0403385"
+       sodipodi:cy="40.931347"
+       sodipodi:cx="204.76729"
+       sodipodi:type="arc"
+       id="path4186"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4188"
+       sodipodi:type="arc"
+       sodipodi:cx="204.76729"
+       sodipodi:cy="40.931347"
+       sodipodi:rx="9.0403385"
+       sodipodi:ry="9.0411043"
+       sodipodi:start="4.9741884"
+       sodipodi:end="6.0213859"
+       sodipodi:open="true"
+       d="m 207.1071,32.198311 a 9.0403385,9.0411043 0 0 1 6.39248,6.393026"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       d="m 196.03499,38.591337 a 9.0403385,9.0411043 0 0 1 6.39249,-6.393026"
+       sodipodi:open="true"
+       sodipodi:end="4.4505896"
+       sodipodi:start="3.403392"
+       sodipodi:ry="9.0411043"
+       sodipodi:rx="9.0403385"
+       sodipodi:cy="40.931347"
+       sodipodi:cx="204.76729"
+       sodipodi:type="arc"
+       id="path4190"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4192"
+       sodipodi:type="arc"
+       sodipodi:cx="204.76729"
+       sodipodi:cy="40.931347"
+       sodipodi:rx="9.0403385"
+       sodipodi:ry="9.0411043"
+       sodipodi:start="1.8325957"
+       sodipodi:end="2.8797933"
+       sodipodi:open="true"
+       d="m 202.42748,49.664383 a 9.0403385,9.0411043 0 0 1 -6.39249,-6.393026"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4194"
+       d="m 204.7673,30.542282 0,6.879103"
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 204.7673,44.513411 0,6.879101"
+       id="path4196"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path4198"
+       d="m 215.12961,40.931347 -6.87853,0"
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.99999994px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 201.23685,40.931347 -6.87852,0"
+       id="path4200"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\control.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:#00a5e2;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 34.976532,91.959671 41.289985,0 -6.692261,18.814099 -27.526656,0 z"
+       id="path4204"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <circle
+       style="fill:#00a5e2;fill-opacity:0.94117647;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4206"
+       cx="65.786186"
+       cy="115.57198"
+       r="3.7880721"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <circle
+       r="3.7880721"
+       cy="115.69825"
+       cx="45.835678"
+       id="circle4208"
+       style="fill:#00a5e2;fill-opacity:0.94117647;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <rect
+       style="fill:#ffffff;fill-opacity:0;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect4212"
+       width="55.404015"
+       height="49.404011"
+       x="106.55121"
+       y="79.053055"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       sodipodi:nodetypes="ccccc"
+       inkscape:connector-curvature="0"
+       id="path4214"
+       d="m 113.51589,91.959671 41.28999,0 -6.69226,18.814099 -27.52666,0 z"
+       style="fill:#00a5e2;fill-opacity:0.94117647;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <circle
+       r="3.7880721"
+       cy="115.82452"
+       cx="143.56793"
+       id="circle4216"
+       style="fill:#00a5e2;fill-opacity:0.94117647;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <circle
+       style="fill:#00a5e2;fill-opacity:0.94117647;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="circle4218"
+       cx="124.37504"
+       cy="115.69825"
+       r="3.7880721"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4238"
+       sodipodi:sides="8"
+       sodipodi:cx="55.357142"
+       sodipodi:cy="101.6479"
+       sodipodi:r1="6.7656283"
+       sodipodi:r2="6.4492917"
+       sodipodi:arg1="0.38732128"
+       sodipodi:arg2="0.78002036"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 61.621602,104.20335 -3.641788,3.68117 -5.178113,0.0278 -3.681169,-3.64179 -0.02785,-5.178109 3.641788,-3.681169 5.178112,-0.02785 3.68117,3.641788 z"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 49.464286,95.75506 62.678572,108.6122"
+       id="path4240"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#00a5e2;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 49.107143,107.89792 61.25,95.219346"
+       id="path4242"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_defend.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 126.78571,104.05863 0,-6.071428 8.70536,0 0,-3.214285 6.29464,6.339283 -6.29464,6.25 0,-3.125 z"
+       id="path4244"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccc"
+       inkscape:export-filename="C:\Users\cynic\Documents\src\OverwatchSynergy\OverwatchSynergy.Api\wwwroot\img\escort_attack.png"
+       inkscape:export-xdpi="181.93628"
+       inkscape:export-ydpi="181.93628" />
+  </g>
+</svg>

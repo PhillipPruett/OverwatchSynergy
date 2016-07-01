@@ -7,5 +7,6 @@ namespace OverwatchSynergy.Api
 {
     public abstract class ObjectiveType
     {
+        public abstract string Id { get; }
     }
 }

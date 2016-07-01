@@ -1,5 +1,5 @@
 ﻿class AvailableHero {
-    constructor(private hero: Hero, private calculatorViewModel: CalculatorViewModel) {
+    constructor(private hero: Hero, private calculatorViewModel: AegisCalculator) {
     }
 
     Name = this.hero.Name;
@@ -8,7 +8,7 @@
     BackgroundImage = "url('img/" + this.hero.Id + ".png')";
 
     Add = () => {
-        var selectedSlot = this.calculatorViewModel.SelectedSlot();
+        let selectedSlot = this.calculatorViewModel.SelectedSlot();
         if (selectedSlot) {
             this.calculatorViewModel.SelectedSlot().Hero(this.hero);
             this.calculatorViewModel.SelectNextAvailableSlot();

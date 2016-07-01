@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.Default.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.NuGet.props" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.NuGet.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -114,8 +115,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="wwwroot\img\assault_attack.png" />
+    <Content Include="wwwroot\img\assault_defend.png" />
     <Content Include="wwwroot\img\bastion.png" />
+    <Content Include="wwwroot\img\control.png" />
     <Content Include="wwwroot\img\dva.png" />
+    <Content Include="wwwroot\img\escort_attack.png" />
+    <Content Include="wwwroot\img\escort_defend.png" />
     <Content Include="wwwroot\img\genji.png" />
     <Content Include="wwwroot\img\hanzo.png" />
     <Content Include="wwwroot\img\IconDefense.png" />
@@ -160,6 +166,7 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="CalculatorController.cs" />
+    <Compile Include="ObjectivesController.cs" />
     <Compile Include="Heroes\Bastion.cs" />
     <Compile Include="Heroes\DVa.cs" />
     <Compile Include="Heroes\Genji.cs" />
@@ -183,23 +190,24 @@
     <Compile Include="Heroes\Zenyatta.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="ObjectiveType.cs" />
-    <Compile Include="ObjectiveTypes\AttackCapture.cs" />
-    <Compile Include="ObjectiveTypes\AttackPushCart.cs" />
-    <Compile Include="ObjectiveTypes\DefenseCapture.cs" />
-    <Compile Include="ObjectiveTypes\DefensePushCart.cs" />
-    <Compile Include="ObjectiveTypes\NeutralCapture.cs" />
+    <Compile Include="ObjectiveTypes\AssaultAttack.cs" />
+    <Compile Include="ObjectiveTypes\EscortAttack.cs" />
+    <Compile Include="ObjectiveTypes\AssaultDefend.cs" />
+    <Compile Include="ObjectiveTypes\EscortDefend.cs" />
+    <Compile Include="ObjectiveTypes\Control.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="HeroesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="WebInterface\AvailableHero.ts" />
-    <TypeScriptCompile Include="WebInterface\CalculatorViewModel.ts" />
+    <TypeScriptCompile Include="WebInterface\AegisCalculator.ts" />
     <TypeScriptCompile Include="WebInterface\Interfaces.ts" />
     <TypeScriptCompile Include="WebInterface\LaunchUI.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\knockout.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\knockout\tests\jasmine.extensions.d.ts" />
+    <TypeScriptCompile Include="WebInterface\ObjectiveType.ts" />
     <TypeScriptCompile Include="WebInterface\SuggestedHero.ts" />
     <TypeScriptCompile Include="WebInterface\TeamSlot.ts" />
   </ItemGroup>
@@ -211,6 +219,21 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>False</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>System</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile>wwwroot\overwatch-aegis.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <TypeScriptTarget>ES6</TypeScriptTarget>
     <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
@@ -227,7 +250,7 @@
     <TypeScriptMapRoot />
     <TypeScriptSourceRoot />
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets" Condition="Exists('..\packages\Microsoft.TypeScript.MSBuild.1.8.11\tools\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
