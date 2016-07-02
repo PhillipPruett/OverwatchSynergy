@@ -13,7 +13,7 @@
 
     BackgroundImage = ko.pureComputed(() => {
         let hero = ko.unwrap(this.Hero);
-
+        
         if (hero) {
             return "url('img/" + hero.Id + ".png')";
         }
